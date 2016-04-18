@@ -1,0 +1,23 @@
+<html>
+<header>
+<link rel="stylesheet" href="basicresponsive.css">
+<meta>
+</header>
+<body>
+<h1>temp nas</h1>
+<p>
+<form action="graphnas.pl" method="get" target="graph2">
+  <fieldset class="w-input field">
+  <legend>Zeitraum</legend>
+  <input type="radio" name="type" value="day" />Tag
+  <input type="radio" name="type" value="week" checked="checked"/>Woche
+  <input type="radio" name="type" value="month"/>Monat
+  <input type="radio" name="type" value="year"/>Jahr
+  </fieldset>
+  <input type="submit" value="Anzeigen" class="w-button button"/>
+</form><iframe marginwidth="0" marginheight="0" frameborder="0" width="420" height="320" name="graph2"
+src="graphnas.pl?type=week">
+</iframe>
+</p>
+</body>
+</html>
