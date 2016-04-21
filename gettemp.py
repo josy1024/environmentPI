@@ -51,8 +51,12 @@ rrdtool.update(
   "%s/temperature.rrd" % (os.path.dirname(os.path.abspath(__file__))),
   data)
 
+time.sleep(2)
+
 import subprocess
 subprocess.call("/opt/xively_tutorial/crontab.sh")
+
+time.sleep(2)
 
 patham2302 = (
   "/opt/temp/dht_gpio7_temp.txt",
