@@ -10,7 +10,7 @@ MAXHUM=100
 TEMPDIR=/opt/temp
 GPIO=7
 
-INPUT=$`/opt/am2302/lol_dht22/loldht $GPIO | /bin/grep "Temperature"`
+INPUT=`/opt/am2302/lol_dht22/loldht $GPIO | /bin/grep "Temperature"`
 HUM=$(echo $INPUT|cut -d " " -f3)
 TEMP=$(echo $INPUT|cut -d " " -f7)
  
