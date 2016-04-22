@@ -9,5 +9,8 @@ git pull origin master
 git push origin master
 
 #
+# store credentials!
+git config credential.helper store
+
 #git bash added git repository
 git clone https://github.com/josy1024/environmentPI.git
