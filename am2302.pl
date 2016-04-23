@@ -7,7 +7,7 @@ use strict;
 
 
 # path to database
-my $rrd='/opt/temp/am2303.rrd';
+my $rrd='/opt/temp/am2302.rrd';
 
 my $query=new CGI;
 
@@ -57,17 +57,17 @@ RRDs::graph($tmpfile,
   @opts,
 #  "DEF:temp0=$rrd:temp0:AVERAGE",
 #  "LINE2:temp0#00FF00:Innen",
-"DEF:tempmins0=am2303.rrd:temp0:MIN",
-"DEF:tempmaxs0=am2303.rrd:temp0:MAX",
-"DEF:tempavg0=am2303.rrd:temp0:AVERAGE",
-"DEF:lastwtempavg0=am2303.rrd:temp0:AVERAGE:start=end-1w:end=now-1w",
-"DEF:lastdtempavg0=am2303.rrd:temp0:AVERAGE:start=end-1w:end=now-1d",
-"DEF:hummins0=am2303.rrd:hum0:MIN",
-"DEF:hummaxs0=am2303.rrd:hum0:MAX",
-"DEF:humpavg0=am2303.rrd:temp0:AVERAGE",
+"DEF:tempmins0=am2302.rrd:temp0:MIN",
+"DEF:tempmaxs0=am2302.rrd:temp0:MAX",
+"DEF:tempavg0=am2302.rrd:temp0:AVERAGE",
+"DEF:lastwtempavg0=am2302.rrd:temp0:AVERAGE:start=end-1w:end=now-1w",
+"DEF:lastdtempavg0=am2302.rrd:temp0:AVERAGE:start=end-1w:end=now-1d",
+"DEF:hummins0=am2302.rrd:hum0:MIN",
+"DEF:hummaxs0=am2302.rrd:hum0:MAX",
+"DEF:humpavg0=am2302.rrd:temp0:AVERAGE",
 "SHIFT:lastwtempavg0:604800",
 "SHIFT:lastdtempavg0:86400",
-"DEF:temp0=am2303.rrd:temp0:AVERAGE",
+"DEF:temp0=am2302.rrd:temp0:AVERAGE",
 "CDEF:tempranges0=tempmaxs0,tempmins0,-",
 "CDEF:humranges0=tempmaxs0,tempmins0,-",
 
