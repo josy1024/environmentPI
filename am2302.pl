@@ -72,7 +72,7 @@ RRDs::graph($tmpfile,
 "DEF:hummaxs0=am2302.rrd:hum0:MAX",
 "DEF:humavg0=am2302.rrd:hum0:AVERAGE",
 "DEF:hum0=am2302.rrd:hum0:AVERAGE",
-"CDEF:humranges0=tempmaxs0,tempmins0,-",
+"CDEF:humranges0=hummaxs0,hummins0,-",
 
 "LINE1:tempmins0#006633",
 "AREA:tempranges0#8dadf588::STACK",
