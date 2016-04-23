@@ -1,0 +1,7 @@
+# schalter 2 ein
+send 11111 2 1
+
+# schalter 2 aus
+send 11111 2 0
+
+ 
