@@ -54,17 +54,15 @@ rrdtool.update(
 
 import subprocess
 
+# get the data and write them to .txt files
 subprocess.call("/opt/temp/am2302.sh")
-
-subprocess.call("/opt/xively_tutorial/crontab.sh")
-
-time.sleep(2)
 
 patham2302 = (
   "/opt/temp/dht_gpio7_temp.txt",
   "/opt/temp/dht_gpio7_hum.txt",
 )
 
+# update rrd file for am2302
 data = 'N'
 for path in patham2302:
   data += ':'
@@ -74,4 +72,5 @@ rrdtool.update(
   "%s/am2302.rrd" % (os.path.dirname(os.path.abspath(__file__))),
   data)
 
-
+# CALL xivley update script for the data
+subprocess.call("/opt/xively_tutorial/crontab.sh")
