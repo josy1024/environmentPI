@@ -50,6 +50,7 @@ my @opts=("-v", "°C",
 "-e", "now",
 "--slope-mode",
 "--font", "DEFAULT:7:",
+"--x-grid", "MINUTE:60:HOUR:3:HOUR:6:0:%X",
 "-A",
 "-D");
 
