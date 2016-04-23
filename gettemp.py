@@ -51,9 +51,11 @@ rrdtool.update(
   "%s/temperature.rrd" % (os.path.dirname(os.path.abspath(__file__))),
   data)
 
-time.sleep(2)
 
 import subprocess
+
+subprocess.call("/opt/temp/am2302.sh")
+
 subprocess.call("/opt/xively_tutorial/crontab.sh")
 
 time.sleep(2)
