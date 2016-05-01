@@ -11,14 +11,28 @@ function sendMessage($chatID, $messaggio) {
 
     $url = API_URL . "/sendMessage?chat_id=" . $chatID;
     $url = $url . "&text=" . urlencode($messaggio);
-    $ch = curl_init();
+    $handle = curl_init();
     $optArray = array(
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true
     );
-    curl_setopt_array($ch, $optArray);
-    $http_code = curl_exec($ch);
-    curl_close($ch);
+    curl_setopt_array($handle, $optArray);
+    #$http_code = curl_exec($ch);
+    
+    #curl_close($ch);
+    
+    $response = curl_exec($handle);
+
+    if ($response === false) {
+        $errno = curl_errno($handle);
+        $error = curl_error($handle);
+        error_log("Curl returned error $errno: $error\n");
+        curl_close($handle);
+        return false;
+    }
+
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    curl_close($handle);
     
       if ($http_code >= 500) {
             // do not wat to DDOS server if something goes wrong
