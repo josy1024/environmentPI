@@ -9,7 +9,7 @@ function sendMessage($chatID, $messaggio) {
     echo "sending message to " . $chatID . "\n";
 
 
-    $url = API_URL . "/sendMessage?chat_id=" . $chatID;
+    $url = API_URL . "sendMessage?chat_id=" . $chatID;
     $url = $url . "&text=" . urlencode($messaggio);
     $handle = curl_init();
     $optArray = array(
