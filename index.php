@@ -8,7 +8,24 @@ $w=800;
 <link rel="stylesheet" href="basicresponsive.css">
 </header>
 <body>
-<h1>temp oscm rasperry pi</h1>
+<h1>smart home</h1>
+<p>
+  <a href="http://10.0.0.15/am2302.pl?type=day&h=800&w=1200" target="_new">AM2302</a>
+  <a href="http://10.0.0.15/graph3.pl?type=day&h=800&w=1200" target="_new">Temp1802</a>
+</p>
+<h2>Lampe WZ</h2>
+<form action="443/on.php" method="get" target="onoff">
+<input type="hidden" name="s" id="s" value="1">
+<button name="on" type="submit" value="1" class="w-button button"/> ON</button>
+<button name="on" type="submit" value="0" class="w-button button"/> OFF </button>
+</form>
+<h2>Schalter 2</h2>
+<form action="443/on.php" method="get" target="onoff">
+<input type="hidden" name="s" id="s" value="2">
+<button name="on" type="submit" value="1" class="w-button button"/> ON</button>
+<button name="on" type="submit" value="0" class="w-button button"/> OFF </button>
+</form>
+<iframe width="0" height="0" name="onoff" src=""></iframe>
 <p>
 <form action="graph3.pl" method="get" target="graph2">
 <div>
@@ -28,18 +45,5 @@ $w=800;
   src="graph3.pl?type=week&w=<?php echo $w; ?>&h=<?php echo $h; ?>">
 </iframe>
 </p>
-<h2>Lampe WZ</h2>
-<form action="443/on.php" method="get" target="onoff">
-<input type="hidden" name="s" id="s" value="1">
-<button name="on" type="submit" value="1" class="w-button button"/> ON</button>
-<button name="on" type="submit" value="0" class="w-button button"/> OFF </button>
-</form>
-<h2>Schalter 2</h2>
-<form action="443/on.php" method="get" target="onoff">
-<input type="hidden" name="s" id="s" value="2">
-<button name="on" type="submit" value="1" class="w-button button"/> ON</button>
-<button name="on" type="submit" value="0" class="w-button button"/> OFF </button>
-</form>
-<iframe width="0" height="0" name="onoff" src=""></iframe>
 </body>
 </html>
