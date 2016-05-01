@@ -9,9 +9,10 @@ $w=800;
 </header>
 <body>
 <h1>smart home</h1>
+<h2>graphs</h2>
 <p>
-  <a href="http://10.0.0.15/am2302.pl?type=day&h=800&w=1200" target="_new">AM2302</a>
-  <a href="http://10.0.0.15/graph3.pl?type=day&h=800&w=1200" target="_new">Temp1802</a>
+  <a href="http://10.0.0.15/am2302.pl?type=day&h=800&w=1200" target="am2302">AM2302</a>
+  <a href="http://10.0.0.15/graph3.pl?type=day&h=800&w=1200" target="temp1802">Temp1802</a>
 </p>
 <h2>Lampe WZ</h2>
 <form action="443/on.php" method="get" target="onoff">
