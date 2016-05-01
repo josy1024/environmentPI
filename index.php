@@ -28,11 +28,13 @@ $w=800;
   src="graph3.pl?type=week&w=<?php echo $w; ?>&h=<?php echo $h; ?>">
 </iframe>
 </p>
+<h2>Lampe WZ</h2>
 <form action="443/on.php" method="get" target="onoff">
 <input type="hidden" name="s" id="s" value="1">
 <button name="on" type="submit" value="1" class="w-button button"/> ON</button>
 <button name="on" type="submit" value="0" class="w-button button"/> OFF </button>
 </form>
+<h2>Schalter 2</h2>
 <form action="443/on.php" method="get" target="onoff">
 <input type="hidden" name="s" id="s" value="2">
 <button name="on" type="submit" value="1" class="w-button button"/> ON</button>
