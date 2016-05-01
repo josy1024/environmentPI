@@ -1,11 +1,11 @@
 <?php
-$h=400;
-$w=600;
+$h=600;
+$w=800;
 ?>
 <html>
 <header>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="basicresponsive.css">
-<meta>
 </header>
 <body>
 <h1>temp oscm rasperry pi</h1>
