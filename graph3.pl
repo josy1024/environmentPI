@@ -85,7 +85,7 @@ my @opts=("-v", "°C",
 #my @local_args = ();
 
 if ($xgrid) {
-  push @opts, '--x-grid', $xgrid;
+  push @opts, "--x-grid", "$xgrid";
 }
     
 
