@@ -79,8 +79,7 @@ my @opts=("-v", "°C",
 #"--alt-y-grid",
 "--y-grid", "1:1",
 #"--y-grid", "0.25:1",
-"-A",
-"-D");
+);
 
 #my @local_args = ();
 
@@ -88,6 +87,8 @@ if ($xgrid) {
   push @opts, "--x-grid", "$xgrid";
 }
     
+push @opts, "-A";
+push @opts, "-D";
 
 RRDs::graph($tmpfile,
   @opts,
