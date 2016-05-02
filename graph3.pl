@@ -30,16 +30,16 @@ $type='day' unless $type =~ /day|2 day|3 day|week|month|year/;
 my $xgrid="MINUTE:60:HOUR:3:HOUR:6:0:%X";
 
 if ($type eq "week") {
-$xgrid="HOUR:6:DAY:1:DAY:1:86400:%A";
+$xgrid="HOUR:6:DAY:1:DAY:1:604800:%A";
 }
 
 if ($type eq "month") {
-$xgrid="DAY:1:DAY:1:DAY:2:86400:%d";
+$xgrid="DAY:1:DAY:1:DAY:2:604800:%d";
 }
 #HOUR:6:DAY:1:DAY:1:0:%a
 
 if ($type eq "year") {
-$xgrid="MONTH:1:MONTH:3:MONTH:1:86400:%m";
+$xgrid="MONTH:1:MONTH:3:MONTH:1:604800:%m";
 }
 
 if ($type eq "3 day") {
