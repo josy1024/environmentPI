@@ -34,12 +34,12 @@ $xgrid="HOUR:6:DAY:1:DAY:1:86400:%A";
 }
 
 if ($type eq "month") {
-$xgrid="HOUR:6:DAY:1:DAY:1:86400:%a";
+$xgrid="HOUR:6:DAY:1:WEEK:2:86400:%d";
 }
 #HOUR:6:DAY:1:DAY:1:0:%a
 
 if ($type eq "year") {
-$xgrid="WEEK:2:MONTH:1:MONTH:1:86400:%a";
+$xgrid="WEEK:2:MONTH:1:MONTH:1:86400:%m";
 }
 
 if ($type eq "3 day") {
