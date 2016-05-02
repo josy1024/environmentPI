@@ -27,8 +27,16 @@ $height=$query->param('h') unless $query->param('h') < 100;
 
 $type='day' unless $type =~ /day|2 day|3 day|week|month|year/; 
 
-my $xgrid="MINUTE:60:HOUR:3:HOUR:6:0:%X";
+#my $xgrid="MINUTE:60:HOUR:3:HOUR:6:0:%X";
+#HOUR:6:DAY:1:DAY:1:0:%a
 
+my $xgrid = '';
+
+if ($type eq "day") {
+$xgrid="MINUTE:60:HOUR:3:HOUR:6:0:%X";
+}
+    
+=begin comment
 if ($type eq "week") {
 $xgrid="HOUR:6:DAY:1:DAY:1:604800:%A";
 }
@@ -36,7 +44,6 @@ $xgrid="HOUR:6:DAY:1:DAY:1:604800:%A";
 if ($type eq "month") {
 $xgrid="DAY:1:DAY:1:DAY:2:604800:%d";
 }
-#HOUR:6:DAY:1:DAY:1:0:%a
 
 if ($type eq "year") {
 $xgrid="MONTH:1:MONTH:3:MONTH:1:604800:%m";
@@ -47,7 +54,8 @@ if ($type eq "3 day") {
 	$type="1 $type";
 }
 
-
+=end comment
+=cut
 
 #my $width=$query->param('w');
 #my $height=$query->param('h');
@@ -67,12 +75,19 @@ my @opts=("-v", "°C",
 "-e", "now",
 "--slope-mode",
 "--font", "DEFAULT:7:",
-"--x-grid", "$xgrid",
+#"--x-grid", "$xgrid",
 #"--alt-y-grid",
 "--y-grid", "1:1",
 #"--y-grid", "0.25:1",
 "-A",
 "-D");
+
+#my @local_args = ();
+
+if ($xgrid) {
+  push @opts, '--x-grid', $xgrid;
+}
+    
 
 RRDs::graph($tmpfile,
   @opts,
