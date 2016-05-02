@@ -25,12 +25,7 @@ $height=$query->param('h') unless $query->param('h') < 100;
 
 #$rrd=$query->param('rrd') unless $query->param('rrd') == 'am2302.rrd';
 
-$type='day' unless $type =~ /day|3 day|week|month|year/; 
-
-if ($type eq "3 day") {
-} else {
-	$type="1 $type";
-}
+$type='day' unless $type =~ /day|2 day|3 day|week|month|year/; 
 
 my $xgrid="MINUTE:60:HOUR:3:HOUR:6:0:%X";
 
@@ -45,6 +40,13 @@ $xgrid="HOUR:6:DAY:1:WEEK:1:0:%X";
 if ($type eq "year") {
 $xgrid="MONTH:1:0:%X";
 }
+
+if ($type eq "3 day") {
+} else {
+	$type="1 $type";
+}
+
+
 
 #my $width=$query->param('w');
 #my $height=$query->param('h');
