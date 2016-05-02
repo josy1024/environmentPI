@@ -36,26 +36,24 @@ if ($type eq "day") {
 $xgrid="MINUTE:60:HOUR:3:HOUR:6:0:%X";
 }
     
-=begin comment
-if ($type eq "week") {
-$xgrid="HOUR:6:DAY:1:DAY:1:604800:%A";
-}
+#if ($type eq "week") {
+#$xgrid="HOUR:6:DAY:1:DAY:1:604800:%A";
+#}
 
-if ($type eq "month") {
-$xgrid="DAY:1:DAY:1:DAY:2:604800:%d";
-}
-
-if ($type eq "year") {
-$xgrid="MONTH:1:MONTH:3:MONTH:1:604800:%m";
-}
+# if ($type eq "month") {
+# $xgrid="DAY:1:DAY:1:DAY:2:604800:%d";
+# }
+# 
+# if ($type eq "year") {
+# $xgrid="MONTH:1:MONTH:3:MONTH:1:604800:%m";
+# }
 
 if ($type eq "3 day") {
 } else {
 	$type="1 $type";
 }
 
-=end comment
-=cut
+
 
 #my $width=$query->param('w');
 #my $height=$query->param('h');
