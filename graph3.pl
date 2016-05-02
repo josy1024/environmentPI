@@ -35,15 +35,15 @@ if ($type eq "3 day") {
 my $xgrid="MINUTE:60:HOUR:3:HOUR:6:0:%X";
 
 if ($type eq "week") {
-$xgrid="HOUR:3:HOUR:6:DAY:1:0:%X"
+$xgrid="HOUR:3:HOUR:6:DAY:1:0:%X";
 }
 
 if ($type eq "month") {
-$xgrid="HOUR:6:DAY:1:WEEK:1:0:%X"
+$xgrid="HOUR:6:DAY:1:WEEK:1:0:%X";
 }
 
 if ($type eq "year") {
-$xgrid="MONTH:1:0:%X"
+$xgrid="MONTH:1:0:%X";
 }
 
 #my $width=$query->param('w');
