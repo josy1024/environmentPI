@@ -141,26 +141,30 @@ function processMessage($message) {
 }
 
 
-define('WEBHOOK_URL', 'https://my-site.example.com/secret-path-for-webhooks/');
+define('WEBHOOK_URL', 'https://10.0.0.15/bot/');
 
-if (php_sapi_name() == 'cli') {
-  // if run from console, set or delete webhook
-  apiRequest('setWebhook', array('url' => isset($argv[1]) && $argv[1] == 'delete' ? '' : WEBHOOK_URL));
-  exit;
-}
+#if (php_sapi_name() == 'cli') {
+#  // if run from console, set or delete webhook
+#  apiRequest('setWebhook', array('url' => isset($argv[1]) && $argv[1] == 'delete' ? '' : WEBHOOK_URL));
+#  exit;
+#}
 
+#apiRequest('setWebhook', array('url' => ''));
+#
+apiRequest("sendMessage", array('chat_id' => "@Josy1024", "text" => 'whoohooo!Nice to meet you'));
 
-$content = file_get_contents("php://input");
-$update = json_decode($content, true);
+#$content = file_get_contents("php://input");
+#$update = json_decode($content, true);
 
-if (!$update) {
-  // receive wrong update, must not happen
-  exit;
-}
+#if (!$update) {
+#  // receive wrong update, must not happen
+#  exit;
+#}
 
-if (isset($update["message"])) {
-  processMessage($update["message"]);
-}
+#if (isset($update["message"])) {
+#  processMessage($update["message"]);
+#}
 
+#apiRequest("sendMessage", array('chat_id' => "@josy1024", "text" => 'whoohooo!Nice to meet you'));
 
 ?>
