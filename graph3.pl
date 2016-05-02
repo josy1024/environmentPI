@@ -51,6 +51,9 @@ my @opts=("-v", "°C",
 "--slope-mode",
 "--font", "DEFAULT:7:",
 "--x-grid", "MINUTE:60:HOUR:3:HOUR:6:0:%X",
+#"--alt-y-grid",
+"--y-grid", "1:1",
+#"--y-grid", "0.25:1",
 "-A",
 "-D");
 
