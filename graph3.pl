@@ -32,6 +32,20 @@ if ($type eq "3 day") {
 	$type="1 $type";
 }
 
+my $xgrid="MINUTE:60:HOUR:3:HOUR:6:0:%X";
+
+if ($type eq "week") {
+$xgrid="HOUR:3:HOUR:6:DAY:1:0:%X"
+}
+
+if ($type eq "month") {
+$xgrid="HOUR:6:DAY:1:WEEK:1:0:%X"
+}
+
+if ($type eq "year") {
+$xgrid="MONTH:1:0:%X"
+}
+
 #my $width=$query->param('w');
 #my $height=$query->param('h');
 
@@ -50,7 +64,7 @@ my @opts=("-v", "°C",
 "-e", "now",
 "--slope-mode",
 "--font", "DEFAULT:7:",
-"--x-grid", "MINUTE:60:HOUR:3:HOUR:6:0:%X",
+"--x-grid", "$xgrid",
 #"--alt-y-grid",
 "--y-grid", "1:1",
 #"--y-grid", "0.25:1",
