@@ -152,6 +152,13 @@ p {
   text-shadow: none;
 }
 
+@font-face {
+    font-family: 'weather';
+    src: url('static/artill_clean_icons.otf') format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 #weather {
   width: 500px;
   margin: 0px auto;
