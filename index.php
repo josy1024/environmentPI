@@ -50,5 +50,30 @@ $w=800;
   src="graph3.pl?type=week&w=<?php echo $w; ?>&h=<?php echo $h; ?>">
 </iframe>
 </p>
+
+<script>
+//Docs at http://simpleweatherjs.com
+$(document).ready(function() {
+  $.simpleWeather({
+    location: 'Fahnsdorf, AT',
+    woeid: '',
+    unit: 'c',
+    success: function(weather) {
+      html = '<h2><i class="icon-'+weather.code+'"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+      html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
+      html += '<li class="currently">'+weather.currently+'</li>';
+      html += '<li>'+weather.wind.direction+' '+weather.wind.speed+' '+weather.units.speed+'</li>';
+      html += '<li>'+weather.sunrise+' - '+weather.sunset+'</li>';
+      html +='</ul>';
+  
+      $("#weather").html(html);
+    },
+    error: function(error) {
+      $("#weather").html('<p>'+error+'</p>');
+    }
+  });
+});
+</script>
+
 </body>
 </html>
