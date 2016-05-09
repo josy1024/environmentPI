@@ -154,7 +154,7 @@ p {
 
 @font-face {
     font-family: 'weather';
-    src: url('static/artill_clean_icons.otf') format("opentype");
+    src: url('artill_clean_icons.otf') format("opentype");
     font-weight: normal;
     font-style: normal;
 }
