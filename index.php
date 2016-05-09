@@ -5,7 +5,9 @@ $w=800;
 <html>
 <header>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="basicresponsive.css">
+<link rel="stylesheet" href="static/basicresponsive.css">
+<script src="static/jquery.min.js"></script>
+<script src="static/jquery.simpleWeather.min.js"></script>
  <title>smart home</title>
 </header>
 <body>
@@ -15,6 +17,7 @@ $w=800;
   <a href="http://10.0.0.15/am2302.pl?type=day&h=800&w=1200" target="am2302">AM2302</a>
   <a href="http://10.0.0.15/graph3.pl?type=day&h=800&w=1200" target="temp1802">Temp1802</a>
 </p>
+<div id="weather"></div>
 <h2>Lampe WZ</h2>
 <form action="443/on.php" method="get" target="onoff">
 <input type="hidden" name="s" id="s" value="1">
