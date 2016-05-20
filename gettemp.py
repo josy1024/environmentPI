@@ -81,15 +81,15 @@ pathairsensor = (
 )
 
 # update rrd file for am2302
-data = 'N'
-for path in pathairsensor:
-  data += ':'
-  data += read_file(path)
+try:
+  data = 'N'
+  for path in pathairsensor:
+    data += ':'
+    data += read_file(path)
 
-rrdtool.update(
-  "%s/airsensor.rrd" % (os.path.dirname(os.path.abspath(__file__))),
-  data)
-  
-
-# CALL xivley update script for the data
-subprocess.call("/opt/xively_tutorial/crontab.sh")
+  rrdtool.update(
+    "%s/airsensor.rrd" % (os.path.dirname(os.path.abspath(__file__))),
+    data)
+finally:  
+  # CALL xivley update script for the data
+  subprocess.call("/opt/xively_tutorial/crontab.sh")
