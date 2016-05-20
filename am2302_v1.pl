@@ -7,7 +7,7 @@ use strict;
 
 
 # path to database
-my $rrd='/opt/temp/temperature.rrd';
+my $rrd='/opt/temp/am2302.rrd';
 
 my $query=new CGI;
 
@@ -25,35 +25,12 @@ $height=$query->param('h') unless $query->param('h') < 100;
 
 #$rrd=$query->param('rrd') unless $query->param('rrd') == 'am2302.rrd';
 
-$type='day' unless $type =~ /day|2 day|3 day|week|month|year/; 
-
-#my $xgrid="MINUTE:60:HOUR:3:HOUR:6:0:%X";
-#HOUR:6:DAY:1:DAY:1:0:%a
-
-my $xgrid = '';
-
-if ($type eq "day") {
-$xgrid="MINUTE:60:HOUR:3:HOUR:6:0:%X";
-}
-    
-#if ($type eq "week") {
-#$xgrid="HOUR:6:DAY:1:DAY:1:604800:%A";
-#}
-
-# if ($type eq "month") {
-# $xgrid="DAY:1:DAY:1:DAY:2:604800:%d";
-# }
-# 
-# if ($type eq "year") {
-# $xgrid="MONTH:1:MONTH:3:MONTH:1:604800:%m";
-# }
+$type='day' unless $type =~ /day|3 day|week|month|year/; 
 
 if ($type eq "3 day") {
 } else {
 	$type="1 $type";
 }
-
-
 
 #my $width=$query->param('w');
 #my $height=$query->param('h');
@@ -73,43 +50,49 @@ my @opts=("-v", "°C",
 "-e", "now",
 "--slope-mode",
 "--font", "DEFAULT:7:",
-#"--x-grid", "$xgrid",
-#"--alt-y-grid",
-"--y-grid", "1:1",
-#"--y-grid", "0.25:1",
-);
-
-#my @local_args = ();
-
-if ($xgrid) {
-  push @opts, "--x-grid", "$xgrid";
-}
-    
-push @opts, "-A";
-push @opts, "-D";
+"--x-grid", "MINUTE:60:HOUR:3:HOUR:6:0:%X",
+"-A",
+"-D");
 
 RRDs::graph($tmpfile,
   @opts,
 #  "DEF:temp0=$rrd:temp0:AVERAGE",
 #  "LINE2:temp0#00FF00:Innen",
-"DEF:tempmins0=temperature.rrd:temp0:MIN",
-"DEF:tempmaxs0=temperature.rrd:temp0:MAX",
-"DEF:tempavg0=temperature.rrd:temp0:AVERAGE",
-"DEF:lastwtempavg0=temperature.rrd:temp0:AVERAGE:start=end-1w:end=now-1w",
-"DEF:lastdtempavg0=temperature.rrd:temp0:AVERAGE:start=end-1w:end=now-1d",
+"DEF:tempmins0=am2302.rrd:temp0:MIN",
+"DEF:tempmaxs0=am2302.rrd:temp0:MAX",
+"DEF:tempavg0=am2302.rrd:temp0:AVERAGE",
+"DEF:lastwtempavg0=am2302.rrd:temp0:AVERAGE:start=end-1w:end=now-1w",
+"DEF:lastdtempavg0=am2302.rrd:temp0:AVERAGE:start=end-1w:end=now-1d",
 "SHIFT:lastwtempavg0:604800",
 "SHIFT:lastdtempavg0:86400",
-"DEF:temp0=temperature.rrd:temp0:AVERAGE",
+"DEF:temp0=am2302.rrd:temp0:AVERAGE",
 "CDEF:tempranges0=tempmaxs0,tempmins0,-",
-"LINE1:tempmins0#0000FF",
+
+"DEF:hummins0=am2302.rrd:hum0:MIN",
+"DEF:hummaxs0=am2302.rrd:hum0:MAX",
+"DEF:humavg0=am2302.rrd:hum0:AVERAGE",
+"DEF:hum0=am2302.rrd:hum0:AVERAGE",
+"CDEF:humranges0=hummaxs0,hummins0,-",
+
+"LINE1:tempmins0#006633",
 "AREA:tempranges0#8dadf588::STACK",
-"LINE1:tempmaxs0#0000FF",
-"LINE2:tempavg0#0000FF:jetzt",
+"LINE1:tempmaxs0#006633",
+"LINE2:tempavg0#006633:jetzt",
 "LINE1:lastwtempavg0#F00000:vorigeW",
 "LINE1:lastdtempavg0#A0A000:gestern",
-'GPRINT:temp0:LAST:"Jetzt\: %5.2lf"',
+
+"LINE1:hummins0#0000FF",
+"AREA:humranges0#8dadf588::STACK",
+"LINE1:hummaxs0#0000FF",
+"LINE2:humavg0#0000FF:jetzt",
+#"LINE1:lastwtempavg0#F00000:vorigeW",
+#"LINE1:lastdtempavg0#A0A000:gestern",
+
+'GPRINT:temp0:LAST:"Jetzt T\: %5.2lf"',
+'GPRINT:hum0:LAST:"Jetzt H\: %5.2lf"',
 'GPRINT:tempavg0:AVERAGE:"Avg\: %5.2lf"\n',
-'GPRINT:lastwtempavg0:AVERAGE:"LastweekAvg\: %5.2lf"\n',
+'GPRINT:humavg0:AVERAGE:"Avg\: %5.2lf"\n',
+#'GPRINT:lastwtempavg0:AVERAGE:"LastweekAvg\: %5.2lf"\n',
 'GPRINT:tempmaxs0:MAX:"Max\: %5.2lf"',
 'GPRINT:tempmins0:MIN:"Min\: %5.2lf"\n',
 );

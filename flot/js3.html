@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0094)http://javascriptrrd.sourceforge.net/docs/javascriptrrd_v0.5.0/src/examples/rrdMatrixFlot.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><script type="text/javascript" src="./js3_files/binaryXHR.js"></script><script type="text/vbscript">
+Function IEBinary_getByteAt(strBinary, iOffset)
+	IEBinary_getByteAt = AscB(MidB(strBinary,iOffset+1,1))
+End Function
+Function IEBinary_getLength(strBinary)
+	IEBinary_getLength = LenB(strBinary)
+End Function
+</script>
+
+    <script type="text/javascript" src="./js3_files/rrdFile.js"></script>
+
+    <!-- rrdFlotMatrix class needs the following four include files !-->
+    <script type="text/javascript" src="./js3_files/rrdFlotSupport.js"></script>
+    <script type="text/javascript" src="./js3_files/rrdFlotMatrix.js"></script>
+    <script type="text/javascript" src="./js3_files/jquery.js"></script>
+    <script type="text/javascript" src="./js3_files/jquery.flot.js"></script>
+    <script type="text/javascript" src="./js3_files/jquery.flot.selection.js"></script>
+  
+    <title>Graph multiple RRDs with Flot</title>
+  </head>
+
+  <body>
+     <h1 id="title">Graph multiple RRDs with Flot</h1>
+
+     RRD group: <select id="input_fname" onchange="fname_update()"><option value="example4">example4</option></select>
+     <button onclick="fname_update()">Update</button>
+    <hr>
+
+    <table id="infotable" border="1">
+        <tbody>
+	<tr><td><b>RRD file</b></td><td id="fname" colspan="5">Group example4</td></tr>
+    </tbody></table>
+
+    <div id="mygraph"><table><tbody><tr><td colspan="4">Element:<select id="mygraph_ds"><option value="ClientGlideIdle">ClientGlideIdle</option><option value="ClientGlideRunning">ClientGlideRunning</option><option value="ClientGlideTotal">ClientGlideTotal</option><option value="ClientInfoAge">ClientInfoAge</option><option value="ClientJobsIdle">ClientJobsIdle</option><option value="ClientJobsRunning">ClientJobsRunning</option><option value="ReqIdle">ReqIdle</option><option value="ReqMaxRun">ReqMaxRun</option><option value="StatusHeld">StatusHeld</option><option value="StatusIdle">StatusIdle</option><option value="StatusIdleOther">StatusIdleOther</option><option value="StatusPending">StatusPending</option><option value="StatusRunning">StatusRunning</option><option value="StatusStageIn">StatusStageIn</option><option value="StatusStageOut">StatusStageOut</option><option value="StatusWait">StatusWait</option></select></td></tr><tr><td colspan="3">Resolution:<select id="mygraph_res"><option value="0">5min (2 days 13h total)</option><option value="1">60min (30 days total)</option><option value="2">12h (12 months total)</option></select></td><td>Select RRDs to plot:</td></tr><tr><td colspan="3"><div id="mygraph_graph" style="width: 500px; height: 300px; padding: 0px; position: relative;"><canvas class="base" width="500" height="300"></canvas><canvas class="overlay" width="500" height="300" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="tickLabels" style="font-size:smaller"><div class="xAxis x1Axis" style="color:#545454"><div class="tickLabel" style="position:absolute;text-align:center;left:38px;top:268px;width:50px">May 8 8:00</div><div class="tickLabel" style="position:absolute;text-align:center;left:99px;top:268px;width:50px">May 8 16:00</div><div class="tickLabel" style="position:absolute;text-align:center;left:160px;top:268px;width:50px">May 9 0:00</div><div class="tickLabel" style="position:absolute;text-align:center;left:221px;top:268px;width:50px">May 9 8:00</div><div class="tickLabel" style="position:absolute;text-align:center;left:282px;top:268px;width:50px">May 9 16:00</div><div class="tickLabel" style="position:absolute;text-align:center;left:342px;top:268px;width:50px">May 10 0:00</div><div class="tickLabel" style="position:absolute;text-align:center;left:403px;top:268px;width:50px">May 10 8:00</div><div class="tickLabel" style="position:absolute;text-align:center;left:464px;top:268px;width:50px">May 10 16:00</div></div><div class="yAxis y1Axis" style="color:#545454"><div class="tickLabel" style="position:absolute;text-align:right;top:253px;right:479px;width:21px">0</div><div class="tickLabel" style="position:absolute;text-align:right;top:216px;right:479px;width:21px">100</div><div class="tickLabel" style="position:absolute;text-align:right;top:180px;right:479px;width:21px">200</div><div class="tickLabel" style="position:absolute;text-align:right;top:143px;right:479px;width:21px">300</div><div class="tickLabel" style="position:absolute;text-align:right;top:106px;right:479px;width:21px">400</div><div class="tickLabel" style="position:absolute;text-align:right;top:69px;right:479px;width:21px">500</div><div class="tickLabel" style="position:absolute;text-align:right;top:33px;right:479px;width:21px">600</div><div class="tickLabel" style="position:absolute;text-align:right;top:-4px;right:479px;width:21px">700</div></div></div><div class="legend"><div style="position: absolute; width: 108px; height: 22px; top: 9px; right: 9px; opacity: 0.85; background-color: rgb(255, 255, 255);"> </div><table style="position:absolute;top:9px;right:9px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #0000ff;overflow:hidden"></div></div></td><td class="legendLabel">s3</td><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid #00ff00;overflow:hidden"></div></div></td><td class="legendLabel">First rrd</td></tr></tbody></table></div></div></td><td valign="top"><form id="mygraph_rrd_cb"><table><tbody><tr valign="top"><td><input type="checkbox" name="rrd" value="0" checked="">First rrd<br><input type="checkbox" name="rrd" value="1">s2<br><input type="checkbox" name="rrd" value="2" checked="">s3<br></td></tr></tbody></table></form></td></tr><tr><td valign="top">Legend:<br><select id="mygraph_legend_sel"><option value="nw">Top</option><option value="sw">Bottom</option><option value="ne">TopRight</option><option value="se">BottomRight</option><option value="None">None</option></select></td><td align="right"><div id="mygraph_scale" style="width: 250px; height: 110px; padding: 0px; position: relative;"><canvas class="base" width="250" height="110"></canvas><canvas class="overlay" width="250" height="110" style="position: absolute; left: 0px; top: 0px;"></canvas><div class="tickLabels" style="font-size:smaller"><div class="xAxis x1Axis" style="color:#545454"><div class="tickLabel" style="position:absolute;text-align:center;left:41px;top:62px;width:35px">May 8 12:00</div><div class="tickLabel" style="position:absolute;text-align:center;left:84px;top:62px;width:35px">May 9 0:00</div><div class="tickLabel" style="position:absolute;text-align:center;left:126px;top:62px;width:35px">May 9 12:00</div><div class="tickLabel" style="position:absolute;text-align:center;left:169px;top:62px;width:35px">May 10 0:00</div><div class="tickLabel" style="position:absolute;text-align:center;left:211px;top:62px;width:35px">May 10 12:00</div></div><div class="yAxis y1Axis" style="color:#545454"><div class="tickLabel" style="position:absolute;text-align:right;top:47px;right:229px;width:21px">0</div><div class="tickLabel" style="position:absolute;text-align:right;top:30px;right:229px;width:21px">200</div><div class="tickLabel" style="position:absolute;text-align:right;top:13px;right:229px;width:21px">400</div><div class="tickLabel" style="position:absolute;text-align:right;top:-4px;right:229px;width:21px">600</div></div></div></div></td><td valign="top"> <br><input type="button" value="Reset selection"></td></tr></tbody></table></div>
+
+    <script type="text/javascript">
+
+      // Remove the Javascript warning
+      document.getElementById("infotable").deleteRow(0);
+
+      {
+        var form_el=document.getElementById('input_fname');
+        form_el.appendChild(new Option("example4","example4"));
+       }
+    
+      // fname_group and rrd_data are the global variable used by all the functions below
+      fname_group=null;
+      rrd_data=[];
+
+      // This function updates the Web Page with the data from the RRD archive header
+      // when a new file is selected
+      function update_fname() {
+        // Finally, update the file name and enable the update button
+        document.getElementById("fname").firstChild.data="Group "+fname_group;
+
+        // the rrdFlot object creates and handles the graph
+        var f=new rrdFlotMatrix("mygraph",[['s1',rrd_data[0]],['s2',rrd_data[1]],['s3',rrd_data[2]]],null,{legend:{position:'ne'}},{'s2':{checked:false},'s1':{title:'First rrd'}});
+      }
+
+      // This is the callback function that,
+      // given a binary file object,
+      // verifies that it is a valid RRD archive
+      // and performs the update of the Web page
+      function update_fname_handler(bf,idx) {
+          var i_rrd_data=undefined;
+          try {
+            var i_rrd_data=new RRDFile(bf);            
+          } catch(err) {
+            alert("File at idx "+idx+" is not a valid RRD archive!");
+          }
+          if (i_rrd_data!=undefined) {
+            rrd_data[idx]=i_rrd_data;
+          }
+          if ((rrd_data[0]!=undefined) && (rrd_data[1]!=undefined) && (rrd_data[2]!=undefined)) {
+            update_fname()
+          }
+      }
+
+      // this function is invoked when the RRD file name changes
+      function fname_update() {
+        var base_el=document.getElementById("mygraph");
+        // First clean up anything in the element
+        while (base_el.lastChild!=null) base_el.removeChild(base_el.lastChild);
+
+        rrd_data[0]=rrd_data[1]=rrd_data[2]=undefined;
+    
+        fname_group=document.getElementById("input_fname").value;
+
+        fname1=fname_group+"_s1.rrd";
+        fname2=fname_group+"_s2.rrd";
+        fname3=fname_group+"_s3.rrd";
+
+        document.getElementById("fname").firstChild.data="Loading group "+fname_group;
+        try {
+          FetchBinaryURLAsync(fname1,update_fname_handler,0);
+        } catch (err) {
+           alert("Failed loading "+fname1+"\n"+err);
+        }
+        try {
+          FetchBinaryURLAsync(fname2,update_fname_handler,1);
+        } catch (err) {
+           alert("Failed loading "+fname2+"\n"+err);
+        }
+        try {
+          FetchBinaryURLAsync(fname3,update_fname_handler,2);
+        } catch (err) {
+           alert("Failed loading "+fname3+"\n"+err);
+        }
+      }
+    </script>
+  
+
+</body></html>

@@ -83,6 +83,7 @@ def run():
 
   if DEBUG:
     print "Updating Xively feed with value: %s" % sensor
+    print "Updating Xively feed with value: %s" % sensorhum
 
   datastream.current_value = sensor
   datastream.at = datetime.datetime.utcnow()
