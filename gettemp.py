@@ -76,6 +76,8 @@ rrdtool.update(
 subprocess.call("/opt/temp/airsensor.sh")
 pathairsensor = (
   "/opt/temp/airsensor.txt",
+  "/opt/temp/dht_gpio7_hum.txt",
+  "/opt/temp/dht_gpio7_temp.txt",
 )
 
 # update rrd file for am2302
