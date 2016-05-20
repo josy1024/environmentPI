@@ -151,7 +151,9 @@ define('WEBHOOK_URL', 'https://10.0.0.15/bot/');
 
 #apiRequest('setWebhook', array('url' => ''));
 #
-apiRequest("sendMessage", array('chat_id' => "@Josy1024", "text" => 'whoohooo!Nice to meet you'));
+$argument1 = $argv[1];
+
+apiRequest("sendMessage", array('chat_id' => ROOM_ID , "text" => $argument1));
 
 #$content = file_get_contents("php://input");
 #$update = json_decode($content, true);
