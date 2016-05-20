@@ -73,7 +73,7 @@ rrdtool.update(
   data)
 
 #airsensor
-subprocess.call("/opt/temp/arisensor.sh")
+subprocess.call("/opt/temp/airsensor.sh")
 pathairsensor = (
   "/opt/temp/airsensor.txt",
 )
@@ -85,7 +85,7 @@ for path in pathairsensor:
   data += read_file(path)
 
 rrdtool.update(
-  "%s/pathairsensor.rrd" % (os.path.dirname(os.path.abspath(__file__))),
+  "%s/airsensor.rrd" % (os.path.dirname(os.path.abspath(__file__))),
   data)
   
 
