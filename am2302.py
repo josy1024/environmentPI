@@ -37,6 +37,13 @@ def read_sensortemp():
     print "Reading temp"
 #  return subprocess.check_output(["rrdtool lastupdate /opt/temp/temperature.rrd | tail -1 | /usr/bin/awk '{print $2}'"], shell=True)
   return subprocess.check_output(["cat /opt/temp/dht_gpio7_temp.txt"], shell=True)
+  
+def read_sensorair():
+  if DEBUG:
+    print "Reading air"
+#  return subprocess.check_output(["rrdtool lastupdate /opt/temp/temperature.rrd | tail -1 | /usr/bin/awk '{print $2}'"], shell=True)
+  return subprocess.check_output(["cat /opt/temp/airsensor.txt"], shell=True)
+  
 #
 # function to return a datastream object. This either creates a new datastream,
 # or returns an existing one
@@ -65,6 +72,17 @@ def get_datastreamhum(feed):
     datastream = feed.datastreams.create("Feuchte_am2302", tags="hum")
     return datastream
 
+def get_datastreamair(feed):
+  try:
+    datastream = feed.datastreams.get("airsensor")
+    if DEBUG:
+      print "Found existing datastream"
+    return datastream
+  except:
+    if DEBUG:
+      print "Creating new datastream"
+    datastream = feed.datastreams.create("airsensor", tags="air")
+    return datastream
 
 
 # main program entry point - runs continuously updating our datastream with the
@@ -80,6 +98,7 @@ def run():
 
   sensor = read_sensortemp()
   sensorhum = read_sensorhum()
+  sensorair = read_sensorair()
 
   if DEBUG:
     print "Updating Xively feed with value: %s" % sensor
@@ -105,6 +124,18 @@ def run():
     print "HTTPError({0}): {1}".format(e.errno, e.strerror)
 
 
+  datastreamair = get_datastreamair(feed)
+  datastreamair.max_value = None
+  datastreamair.min_value = None
+
+
+  datastreamair.current_value = sensorair
+  datastreamair.at = datetime.datetime.utcnow()
+  try:
+    datastreamair.update()
+  except requests.HTTPError as e:
+    print "HTTPError({0}): {1}".format(e.errno, e.strerror)
+    
 #    time.sleep(10)
 
 run()
