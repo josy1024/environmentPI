@@ -9,8 +9,7 @@ TEMPDIR=/opt/temp
 VALUE=`cat $TEMPDIR/airsensor.txt`
 
 
-
-if [ "${VALUE}" -gt "500" ]; then
+if [ "${VALUE}" -gt "1000" ]; then
     /usr/bin/php /opt/temp/bot/tele.php "bitte lueften luft schlecht ${VALUE}"
 fi
 
