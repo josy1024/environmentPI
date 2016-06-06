@@ -80,7 +80,7 @@ pathairsensor = (
   "/opt/temp/dht_gpio7_temp.txt",
 )
 
-# update rrd file for am2302
+# update rrd file for airsensor
 try:
   data = 'N'
   for path in pathairsensor:
@@ -90,6 +90,7 @@ try:
   rrdtool.update(
     "%s/airsensor.rrd" % (os.path.dirname(os.path.abspath(__file__))),
     data)
+    
 finally:  
   # CALL xivley update script for the data
   subprocess.call("/opt/xively_tutorial/crontab.sh")
