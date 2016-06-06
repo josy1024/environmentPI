@@ -6,9 +6,9 @@ $w=800;
 <header>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="static/basicresponsive.css">
+<link href="static/flex-layout-attribute.min.css" rel="stylesheet">
 <script src="static/jquery.min.js"></script>
 <script src="static/jquery.simpleWeather.min.js"></script>
-<script src="static/flex-layout-attribute.min.css"></script>
  <title>smart home</title>
 </header>
 <body>
