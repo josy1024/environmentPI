@@ -57,7 +57,7 @@ my @opts=("-v", "°C",
 "--right-axis", "2:0",
 "--right-axis-format", "%1.1lf",
 
-#"--logarithmic",
+"--logarithmic",
 "-A",
 "-D");
 
