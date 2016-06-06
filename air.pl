@@ -86,7 +86,7 @@ RRDs::graph($tmpfile,
 "DEF:airmaxs0=airsensor.rrd:air:MAX",
 "DEF:airavg0=airsensor.rrd:air:AVERAGE",
 
-"LINE2:airavg0#FF3333:Luftq",
+"LINE1:airavg0#FFF333:Luftq",
 
 "CDEF:scaled_hum=hum,0.5,*",
 "CDEF:hummins0=raw_hummins0,0.5,*",
@@ -115,6 +115,7 @@ RRDs::graph($tmpfile,
 
 'GPRINT:temp:LAST:"Jetzt T\: %5.2lf"',
 'GPRINT:hum:LAST:"Jetzt H\: %5.2lf"',
+'GPRINT:air:LAST:"Jetzt A\: %5.2lf"',
 'GPRINT:tempavg0:AVERAGE:"T Avg\: %5.2lf"\n',
 'GPRINT:humavg0:AVERAGE:"H Avg\: %5.2lf"\n',
 'GPRINT:airavg0:AVERAGE:"A Avg\: %5.2lf"\n',
