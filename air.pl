@@ -85,6 +85,7 @@ RRDs::graph($tmpfile,
 "DEF:airmins0=airsensor.rrd:air:MIN",
 "DEF:airmaxs0=airsensor.rrd:air:MAX",
 "DEF:airavg0=airsensor.rrd:air:AVERAGE",
+"DEF:air=airsensor.rrd:air:AVERAGE",
 
 "LINE1:airavg0#FFF333",
 
