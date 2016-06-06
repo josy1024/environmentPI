@@ -43,3 +43,17 @@ rrdtool graph tempmonth.png \
   AREA:tempranges0#8dadf588::STACK \
   LINE1:tempmaxs0#0000FF \
   LINE2:temp0#0000FF:Innen
+
+
+/usr/bin/rrdtool graph airweek.png \
+-w 600 -h 400 \
+  -s 'now - 1 week' -e 'now' \
+  DEF:air=airsensor.rrd:air:AVERAGE \
+  LINE2:air#00FF00:Innen
+  
+  
+/usr/bin/rrdtool graph airmonth.png \
+-w 600 -h 400 \
+  -s 'now - 1 month' -e 'now' \
+  DEF:air=airsensor.rrd:air:AVERAGE \
+  LINE2:air#00FF00:Innen
