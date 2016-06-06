@@ -86,7 +86,7 @@ RRDs::graph($tmpfile,
 "DEF:airmaxs0=airsensor.rrd:air:MAX",
 "DEF:airavg0=airsensor.rrd:air:AVERAGE",
 
-"LINE1:airavg0#FFF333:Luftq",
+"LINE1:airavg0#FFF333",
 
 "CDEF:scaled_hum=hum,0.5,*",
 "CDEF:hummins0=raw_hummins0,0.5,*",
