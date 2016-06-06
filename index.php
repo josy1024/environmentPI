@@ -8,14 +8,18 @@ $w=800;
 <link rel="stylesheet" href="static/basicresponsive.css">
 <script src="static/jquery.min.js"></script>
 <script src="static/jquery.simpleWeather.min.js"></script>
+<script src="static/flex-layout-attribute.min.css"></script>
  <title>smart home</title>
 </header>
 <body>
 <h1>smart home</h1>
 <h2>graphs</h2>
-<p>
-  <a href="http://10.0.0.15/am2302.pl?type=day&h=800&w=1200" target="am2302">AM2302</a>
-  <a href="http://10.0.0.15/graph3.pl?type=day&h=800&w=1200" target="temp1802">Temp1802</a>
+<div layout="row center-center">
+    <div><a href="http://10.0.0.15/am2302.pl?type=day&h=800&w=1200" target="am2302">AM2302</a></div>
+    <div><a href="http://10.0.0.15/graph3.pl?type=day&h=800&w=1200" target="temp1802">Temp1802</a></div>
+    <div><a href="http://10.0.0.15/air.pl?type=day&h=800&w=1200" target="air">air</a></div>
+</div> 
+  
 </p>
 <div id="weather"></div>
 <h2>Lampe WZ</h2>
