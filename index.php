@@ -14,12 +14,11 @@ $w=800;
 <body>
 <h1>smart home</h1>
 <h2>graphs</h2>
-<div layout="row center-center">
+<div layout="row center-stretch">
     <div><a href="http://10.0.0.15/am2302.pl?type=day&h=800&w=1200" target="am2302">AM2302</a></div>
     <div><a href="http://10.0.0.15/graph3.pl?type=day&h=800&w=1200" target="temp1802">Temp1802</a></div>
     <div><a href="http://10.0.0.15/air.pl?type=day&h=800&w=1200" target="air">air</a></div>
 </div> 
-  
 </p>
 <div id="weather"></div>
 <h2>Lampe WZ</h2>
