@@ -1,6 +1,10 @@
 #!/usr/bin/perl
 #
-# CGI script to create image using RRD graph 
+# CGI script to create image using RRD graph#
+
+# example: http://localhost/air.pl?type=day&h=800&w=1200&offt=1
+
+
 use CGI qw(:all);
 use RRDs;
 use strict;
