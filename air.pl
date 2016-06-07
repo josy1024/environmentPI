@@ -115,9 +115,9 @@ my @oair=(
 
 my @leer ();
 
-@temp = @leer unless $query->param('offt') = 1;
-@oair = @leer unless $query->param('offa') = 1;
-@ohum = @leer unless $query->param('offh') = 1;
+@temp=@leer unless $query->param('offt') = 1;
+@oair=@leer unless $query->param('offa') = 1;
+@ohum=@leer unless $query->param('offh') = 1;
 
 RRDs::graph($tmpfile,
   @opts,
