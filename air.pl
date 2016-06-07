@@ -115,9 +115,21 @@ my @oair=(
 
 #my @leer=(" ",);
 
-undef @temp unless $query->param('offt') = 1;
-undef @oair unless $query->param('offa') = 1;
-undef @ohum unless $query->param('offh') = 1;
+unless ($query->param('offt') < 1)
+{
+  undef @otemp;
+}
+
+unless ($query->param('offa') < 1)
+{
+  undef @oair;
+}
+
+unless ($query->param('offh') < 1)
+{
+  undef @ohum;
+}
+
 
 RRDs::graph($tmpfile,
   @opts,
