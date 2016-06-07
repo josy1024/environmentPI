@@ -57,14 +57,11 @@ my @opts=("-v", "°C",
 "--right-axis", "2:0",
 "--right-axis-format", "%1.1lf",
 
-"--logarithmic",
+#"--logarithmic",
 "-A",
 "-D");
 
-RRDs::graph($tmpfile,
-  @opts,
-#  "DEF:temp=$rrd:temp:AVERAGE",
-#  "LINE2:temp#00FF00:Innen",
+my @otemp=(
 "DEF:tempmins0=airsensor.rrd:temp:MIN",
 "DEF:tempmaxs0=airsensor.rrd:temp:MAX",
 "DEF:tempavg0=airsensor.rrd:temp:AVERAGE",
@@ -74,56 +71,58 @@ RRDs::graph($tmpfile,
 #"SHIFT:lastdtempavg0:86400",
 "DEF:temp=airsensor.rrd:temp:AVERAGE",
 "CDEF:tempranges0=tempmaxs0,tempmins0,-",
+"LINE1:tempmins0#F08080",
+"AREA:tempranges0#F0808030::STACK",
+"LINE1:tempmaxs0#F08080",
+"LINE2:tempavg0#FF3333:Temp aktuell",
+'GPRINT:temp:LAST:"Jetzt T\: %5.2lf"',
+'GPRINT:tempmaxs0:MAX:"Max\: %5.2lf"',
+'GPRINT:tempmins0:MIN:"Min\: %5.2lf"\n',
+'GPRINT:tempavg0:AVERAGE:"T Avg\: %5.2lf"\n',
+);
 
+
+my @ohum=(
 "DEF:hum=airsensor.rrd:hum:AVERAGE",
-
 "DEF:raw_hummins0=airsensor.rrd:hum:MIN",
 "DEF:raw_hummaxs0=airsensor.rrd:hum:MAX",
 "DEF:raw_humavg0=airsensor.rrd:hum:AVERAGE",
-
-
-"DEF:airmins0=airsensor.rrd:air:MIN",
-"DEF:airmaxs0=airsensor.rrd:air:MAX",
-"DEF:airavg0=airsensor.rrd:air:AVERAGE",
-"DEF:air=airsensor.rrd:air:AVERAGE",
 
 "CDEF:scaled_hum=hum,0.5,*",
 "CDEF:hummins0=raw_hummins0,0.5,*",
 "CDEF:hummaxs0=raw_hummaxs0,0.5,*",
 "CDEF:humavg0=raw_humavg0,0.5,*",
-
-#"DEF:hum=airsensor.rrd:hum:AVERAGE",
-#"CDEF:scaled_hum=hum,0.4,*",
-
 "CDEF:humranges0=hummaxs0,hummins0,-",
-
-"LINE1:tempmins0#F08080",
-"AREA:tempranges0#F0808030::STACK",
-"LINE1:tempmaxs0#F08080",
-"LINE2:tempavg0#FF3333:Temp aktuell",
-#"LINE1:lastwtempavg0#F00000:vorigeW",
-#"LINE1:lastdtempavg0#A0A000:gestern",
-
-#"LINE1:airavg0#FFF333",
-"LINE2:airavg0#FF8333:air aktuell",
 
 "LINE1:hummins0#a0a0FF",
 "AREA:humranges0#a0a0f530::STACK",
 "LINE1:hummaxs0#a0a0FF",
 "LINE2:scaled_hum#0000FF:Feuchte aktuell",
-#"LINE2:humavg0#0000FF:jetzt",
-#"LINE1:lastwtempavg0#F00000:vorigeW",
-#"LINE1:lastdtempavg0#A0A000:gestern",
-
-'GPRINT:temp:LAST:"Jetzt T\: %5.2lf"',
 'GPRINT:hum:LAST:"Jetzt H\: %5.2lf"',
-'GPRINT:air:LAST:"Jetzt A\: %5.2lf"',
-'GPRINT:tempavg0:AVERAGE:"T Avg\: %5.2lf"\n',
 'GPRINT:humavg0:AVERAGE:"H Avg\: %5.2lf"\n',
+
+);
+
+my @oair=(
+"DEF:airmins0=airsensor.rrd:air:MIN",
+"DEF:airmaxs0=airsensor.rrd:air:MAX",
+"DEF:airavg0=airsensor.rrd:air:AVERAGE",
+"DEF:air=airsensor.rrd:air:AVERAGE",
+"LINE2:airavg0#FF8333:air aktuell",
+'GPRINT:air:LAST:"Jetzt A\: %5.2lf"',
 'GPRINT:airavg0:AVERAGE:"A Avg\: %5.2lf"\n',
-#'GPRINT:lastwtempavg0:AVERAGE:"LastweekAvg\: %5.2lf"\n',
-'GPRINT:tempmaxs0:MAX:"Max\: %5.2lf"',
-'GPRINT:tempmins0:MIN:"Min\: %5.2lf"\n',
+);
+
+$otemp = () unless $query->param('offt') = 1;
+$oair = () unless $query->param('offa') = 1;
+$ohum = () unless $query->param('offh') = 1;
+
+RRDs::graph($tmpfile,
+  @opts,
+  @otemp,
+  @ohum,
+  @oair,
+
 );
 
 # check error
