@@ -113,9 +113,9 @@ my @oair=(
 'GPRINT:airavg0:AVERAGE:"A Avg\: %5.2lf"\n',
 );
 
-$otemp = () unless $query->param('offt') = 1;
-$oair = () unless $query->param('offa') = 1;
-$ohum = () unless $query->param('offh') = 1;
+@temp = () unless $query->param('offt') = 1;
+@oair = () unless $query->param('offa') = 1;
+@ohum = () unless $query->param('offh') = 1;
 
 RRDs::graph($tmpfile,
   @opts,
