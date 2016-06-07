@@ -113,7 +113,7 @@ my @oair=(
 'GPRINT:airavg0:AVERAGE:"A Avg\: %5.2lf"\n',
 );
 
-my @leer=();
+my @leer=(" ",);
 
 @temp=@leer unless $query->param('offt') = 1;
 @oair=@leer unless $query->param('offa') = 1;
