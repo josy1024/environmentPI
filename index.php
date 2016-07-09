@@ -27,7 +27,13 @@ $w=800;
 <button name="on" type="submit" value="1" class="w-button button"/> ON</button>
 <button name="on" type="submit" value="0" class="w-button button"/> OFF </button>
 </form>
-<h2>Schalter 2</h2>
+<h2>BlueRay WZ</h2>
+<form action="443/on.php" method="get" target="onoff">
+<input type="hidden" name="s" id="s" value="3">
+<button name="on" type="submit" value="1" class="w-button button"/> ON</button>
+<button name="on" type="submit" value="0" class="w-button button"/> OFF </button>
+</form>
+<h2>Schalter Büro</h2>
 <form action="443/on.php" method="get" target="onoff">
 <input type="hidden" name="s" id="s" value="2">
 <button name="on" type="submit" value="1" class="w-button button"/> ON</button>

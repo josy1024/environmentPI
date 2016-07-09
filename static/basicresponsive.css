@@ -160,7 +160,7 @@ p {
 }
 
 #weather {
-  width: 500px;
+  width: 360px;
   margin: 0px auto;
   text-align: center;
   text-transform: uppercase;
@@ -245,11 +245,13 @@ i {
   padding: 6px;
   display: inline-block;
   border-radius: 6px;
+  margin: 3 12px;
 }
 
+/*
 #weather .currently {
   margin: 0 20px;
-}
+} */
 
 @media (max-width: 991px) {
   h1 {
