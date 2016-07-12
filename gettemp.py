@@ -72,7 +72,8 @@ rrdtool.update(
   "%s/am2302.rrd" % (os.path.dirname(os.path.abspath(__file__))),
   data)
 
-#airsensor
+#airsensornofify telegram 
+
 subprocess.call("/opt/temp/airsensor.sh")
 pathairsensor = (
   "/opt/temp/airsensor.txt",
