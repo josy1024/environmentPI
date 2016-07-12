@@ -25,6 +25,7 @@ if [ "${VALUE}" -lt "1000" ]; then
 fi
 
 VALUE=`cat $TEMPDIR/dht_gpio7_temp.txt`
+VALUE=${VALUE/.*}
 STATEFILE=$TEMPDIR/dht_gpio7_temp.high
 
 
@@ -44,6 +45,7 @@ if [ "${VALUE}" -lt "22" ]; then
 fi
 
 VALUE=`cat $TEMPDIR/dht_gpio7_hum.txt`
+VALUE=${VALUE/.*}
 STATEFILE=$TEMPDIR/dht_gpio7_hum.high
 
 
