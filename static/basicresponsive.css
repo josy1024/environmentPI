@@ -152,6 +152,15 @@ p {
   text-shadow: none;
 }
 
+.w-container:before,.w-container:after {
+    content: " ";
+    display: table;
+}
+
+.w-container:after {
+    clear: both;
+}
+
 @font-face {
     font-family: 'weather';
     src: url('artill_clean_icons.otf') format("opentype");

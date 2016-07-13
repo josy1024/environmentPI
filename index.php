@@ -21,24 +21,26 @@ $w=800;
 </div> 
 </p>
 <div id="weather"></div>
-<h2>Lampe WZ</h2>
+<div class="w-container">
 <form action="443/on.php" method="get" target="onoff">
 <input type="hidden" name="s" id="s" value="1">
-<button name="on" type="submit" value="1" class="w-button button"/> ON</button>
+<button name="on" type="submit" value="1" class="w-button button"/>Lampe WZ ON</button>
 <button name="on" type="submit" value="0" class="w-button button"/> OFF </button>
-</form>
-<h2>BlueRay WZ</h2>
+</form></div>
+<div class="w-container">
 <form action="443/on.php" method="get" target="onoff">
 <input type="hidden" name="s" id="s" value="3">
-<button name="on" type="submit" value="1" class="w-button button"/> ON</button>
+<button name="on" type="submit" value="1" class="w-button button"/>BlueRay WZ ON</button>
 <button name="on" type="submit" value="0" class="w-button button"/> OFF </button>
 </form>
-<h2>Schalter Büro</h2>
+</div>
+<div class="w-container">
 <form action="443/on.php" method="get" target="onoff">
 <input type="hidden" name="s" id="s" value="2">
-<button name="on" type="submit" value="1" class="w-button button"/> ON</button>
+<button name="on" type="submit" value="1" class="w-button button"/>Schalter Büro ON</button>
 <button name="on" type="submit" value="0" class="w-button button"/> OFF </button>
 </form>
+</div>
 <iframe width="0" height="0" name="onoff" src=""></iframe>
 <p>
 <form action="graph3.pl" method="get" target="graph2">
