@@ -161,6 +161,10 @@ p {
     clear: both;
 }
 
+.abstand {
+    margin-bottom: 6px;
+}
+
 @font-face {
     font-family: 'weather';
     src: url('artill_clean_icons.otf') format("opentype");
@@ -270,7 +274,7 @@ i {
     text-shadow: none;
   }
   .button {
-    width: 30%;
+    width: 48%;
   }
   .field {
     width: 70%;

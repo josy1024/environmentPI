@@ -21,20 +21,20 @@ $w=800;
 </div> 
 </p>
 <div id="weather"></div>
-<div class="w-container">
+<div class="w-container abstand">
 <form action="443/on.php" method="get" target="onoff">
 <input type="hidden" name="s" id="s" value="1">
 <button name="on" type="submit" value="1" class="w-button button"/>Lampe WZ ON</button>
 <button name="on" type="submit" value="0" class="w-button button"/> OFF </button>
 </form></div>
-<div class="w-container">
+<div class="w-container abstand">
 <form action="443/on.php" method="get" target="onoff">
 <input type="hidden" name="s" id="s" value="3">
 <button name="on" type="submit" value="1" class="w-button button"/>BlueRay WZ ON</button>
 <button name="on" type="submit" value="0" class="w-button button"/> OFF </button>
 </form>
 </div>
-<div class="w-container">
+<div class="w-container abstand">
 <form action="443/on.php" method="get" target="onoff">
 <input type="hidden" name="s" id="s" value="2">
 <button name="on" type="submit" value="1" class="w-button button"/>Schalter Büro ON</button>
