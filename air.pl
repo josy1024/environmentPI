@@ -57,8 +57,8 @@ my @opts=("-v", "°C",
 "--x-grid", "MINUTE:60:HOUR:3:HOUR:6:0:%X",
 #"--y-grid", "1:1",
 
-"--right-axis-label", "Feuchte",
-"--right-axis", "0.1:0",
+"--right-axis-label", "Luftqualitaet",
+"--right-axis", "0.05:0",
 "--right-axis-format", "%1.1lf",
 
 #"--logarithmic",
@@ -114,8 +114,8 @@ my @oair=(
 "DEF:airavg0=airsensor.rrd:air:AVERAGE",
 "DEF:air=airsensor.rrd:air:AVERAGE",
 
-"CDEF:scaled_airavg0=airavg0,0.1,*",
-"CDEF:scaled_air=air,0.1,*",
+"CDEF:scaled_airavg0=airavg0,0.05,*",
+"CDEF:scaled_air=air,0.05,*",
 
 "LINE2:scaled_airavg0#FF8333:air aktuell",
 'GPRINT:air:LAST:"Jetzt A\: %5.2lf"',
