@@ -117,7 +117,7 @@ my @oair=(
 "CDEF:scaled_airavg0=airavg0,0.05,*",
 "CDEF:scaled_air=air,0.05,*",
 
-"LINE2:scaled_airavg0#FF8333:air aktuell",
+"LINE2:scaled_airavg0#00AF00:air aktuell",
 'GPRINT:air:LAST:"Jetzt A\: %5.2lf"',
 'GPRINT:airmins0:MIN:"A min\: %5.2lf"\n',
 'GPRINT:airmaxs0:MAX:"A max\: %5.2lf"\n',
