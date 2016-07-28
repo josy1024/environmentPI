@@ -92,16 +92,17 @@ my @ohum=(
 "DEF:raw_hummaxs0=airsensor.rrd:hum:MAX",
 "DEF:raw_humavg0=airsensor.rrd:hum:AVERAGE",
 
-"CDEF:scaled_hum=hum,10,*",
-"CDEF:hummins0=raw_hummins0,10,*",
-"CDEF:hummaxs0=raw_hummaxs0,10,*",
-"CDEF:humavg0=raw_humavg0,10,*",
+"CDEF:scaled_hum=hum,0.5,*",
+"CDEF:hummins0=raw_hummins0,0.5,*",
+"CDEF:hummaxs0=raw_hummaxs0,0.5,*",
+"CDEF:humavg0=raw_humavg0,0.5,*",
 "CDEF:humranges0=hummaxs0,hummins0,-",
 
 "LINE1:hummins0#a0a0FF",
 "AREA:humranges0#a0a0f530::STACK",
 "LINE1:hummaxs0#a0a0FF",
 "LINE2:scaled_hum#0000FF:Feuchte aktuell",
+
 'GPRINT:hum:LAST:"Jetzt H\: %5.2lf"',
 'GPRINT:humavg0:AVERAGE:"H Avg\: %5.2lf"\n',
 
@@ -112,9 +113,15 @@ my @oair=(
 "DEF:airmaxs0=airsensor.rrd:air:MAX",
 "DEF:airavg0=airsensor.rrd:air:AVERAGE",
 "DEF:air=airsensor.rrd:air:AVERAGE",
-"LINE2:airavg0#FF8333:air aktuell",
+
+"CDEF:scaled_airavg0=airavg0,0.1,*",
+"CDEF:scaled_air=air,0.1,*",
+
+"LINE2:scaled_airavg0#FF8333:air aktuell",
 'GPRINT:air:LAST:"Jetzt A\: %5.2lf"',
-'GPRINT:airavg0:AVERAGE:"A Avg\: %5.2lf"\n',
+'GPRINT:airmins0:MIN:"A min\: %5.2lf"\n',
+'GPRINT:airmaxs0:MAX:"A max\: %5.2lf"\n',
+
 );
 
 #my @leer=(" ",);
