@@ -31,6 +31,23 @@ $height=$query->param('h') unless $query->param('h') < 100;
 
 $type='day' unless $type =~ /day|3 day|week|month|year/; 
 
+my @dayopt=(
+"--x-grid", "MINUTE:60:HOUR:3:HOUR:6:0:%X",
+);
+
+if ($type eq "week") {
+    undef @dayopt;
+} 
+
+if ($type eq "month") {
+    undef @dayopt;
+} 
+
+if ($type eq "year") {
+    undef @dayopt;
+} 
+
+
 if ($type eq "3 day") {
 } else {
 	$type="1 $type";
@@ -141,22 +158,6 @@ unless ($query->param('offh') < 1)
 {
   undef @ohum;
 }
-
-my @dayopt=(
-"--x-grid", "MINUTE:60:HOUR:3:HOUR:6:0:%X",
-);
-
-if ($type eq "week") {
-    undef @dayopt;
-} 
-
-if ($type eq "month") {
-    undef @dayopt;
-} 
-
-if ($type eq "year") {
-    undef @dayopt;
-} 
 
 
 RRDs::graph($tmpfile,
