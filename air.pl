@@ -55,7 +55,7 @@ my @opts=("-v", "°C",
 "--slope-mode",
 "--font", "DEFAULT:7:",
 "--x-grid", "MINUTE:60:HOUR:3:HOUR:6:0:%X",
-"--y-grid", "1:1",
+#"--y-grid", "1:1",
 
 "--right-axis-label", "Feuchte",
 "--right-axis", "2:0",
