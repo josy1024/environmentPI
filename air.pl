@@ -78,9 +78,9 @@ my @otemp=(
 "LINE1:tempmins0#F08080",
 "AREA:tempranges0#F0808030::STACK",
 "LINE1:tempmaxs0#F08080",
-"LINE2:tempavg0#FF3333:Temp aktuell",
+"LINE2:tempavg0#FF3333:Temperatur",
 
-'GPRINT:temp:LAST:"Jetzt T\: %5.1lf"',
+'GPRINT:temp:LAST:"%5.1lf"',
 'GPRINT:tempavg0:AVERAGE:"T Avg\: %5.1lf"\n',
 'GPRINT:tempmins0:MIN:"Min\: %5.1lf"',
 'GPRINT:tempmaxs0:MAX:"Max\: %5.1lf"\n',
@@ -102,10 +102,10 @@ my @ohum=(
 "LINE1:hummins0#a0a0FF",
 "AREA:humranges0#a0a0f530::STACK",
 "LINE1:hummaxs0#a0a0FF",
-"LINE2:scaled_hum#0000FF:Feuchte aktuell",
+"LINE2:scaled_hum#0000FF:Feuchte",
 
-'GPRINT:hum:LAST:"Jetzt H\: %5.1lf"',
-'GPRINT:humavg0:AVERAGE:"H Avg\: %5.1lf"\n',
+'GPRINT:hum:LAST:"%5.1lf"',
+'GPRINT:humavg0:AVERAGE:"Avg\: %5.1lf"\n',
 
 );
 
@@ -118,8 +118,8 @@ my @oair=(
 "CDEF:scaled_airavg0=airavg0,0.05,*",
 "CDEF:scaled_air=air,0.05,*",
 
-"LINE2:scaled_airavg0#00AF00:air aktuell",
-'GPRINT:air:LAST:"Air  \: %5.0lf"',
+"LINE2:scaled_airavg0#00AF00:Luftqualitaet",
+'GPRINT:air:LAST:"%5.0lf"',
 'GPRINT:airavg0:AVERAGE:"Avg \: %5.0lf"\n',
 'GPRINT:airmins0:MIN:"A min\: %5.0lf"',
 'GPRINT:airmaxs0:MAX:"A max\: %5.0lf"\n',
