@@ -58,7 +58,7 @@ my @opts=("-v", "°C",
 #"--y-grid", "1:1",
 
 "--right-axis-label", "Luftqualitaet",
-"--right-axis", "0.05:0",
+"--right-axis", "20:0",
 "--right-axis-format", "%1.1lf",
 
 #"--logarithmic",
