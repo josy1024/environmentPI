@@ -54,7 +54,6 @@ my @opts=("-v", "°C",
 "-e", "now",
 "--slope-mode",
 "--font", "DEFAULT:7:",
-"--x-grid", "MINUTE:60:HOUR:3:HOUR:6:0:%X",
 #"--y-grid", "1:1",
 
 "--right-axis-label", "Luftqualitaet",
@@ -143,9 +142,26 @@ unless ($query->param('offh') < 1)
   undef @ohum;
 }
 
+my @dayopt=(
+"--x-grid", "MINUTE:60:HOUR:3:HOUR:6:0:%X",
+);
+
+if ($type eq "week") {
+    undef @dayopt;
+} 
+
+if ($type eq "month") {
+    undef @dayopt;
+} 
+
+if ($type eq "year") {
+    undef @dayopt;
+} 
+
 
 RRDs::graph($tmpfile,
   @opts,
+  @dayopt,
   @otemp,
   @ohum,
   @oair,
