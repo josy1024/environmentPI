@@ -120,7 +120,7 @@ my @oair=(
 
 "LINE2:scaled_airavg0#00AF00:air aktuell",
 'GPRINT:air:LAST:"Air  \: %5.0lf"',
-'GPRINT:airavg0:AVG:"Avg \: %5.0lf"\n',
+'GPRINT:airavg0:AVERAGE:"Avg \: %5.0lf"\n',
 'GPRINT:airmins0:MIN:"A min\: %5.0lf"',
 'GPRINT:airmaxs0:MAX:"A max\: %5.0lf"\n',
 
