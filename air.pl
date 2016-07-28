@@ -95,7 +95,7 @@ my @ohum=(
 "CDEF:scaled_hum=hum,10,*",
 "CDEF:hummins0=raw_hummins0,10,*",
 "CDEF:hummaxs0=raw_hummaxs0,10,*",
-"CDEF:humavg0=raw_humavg0,0,10,*",
+"CDEF:humavg0=raw_humavg0,10,*",
 "CDEF:humranges0=hummaxs0,hummins0,-",
 
 "LINE1:hummins0#a0a0FF",
