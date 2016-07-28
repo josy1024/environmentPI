@@ -58,7 +58,7 @@ my @opts=("-v", "°C",
 #"--y-grid", "1:1",
 
 "--right-axis-label", "Feuchte",
-"--right-axis", "2:0",
+"--right-axis", "0.1:0",
 "--right-axis-format", "%1.1lf",
 
 #"--logarithmic",
@@ -92,10 +92,10 @@ my @ohum=(
 "DEF:raw_hummaxs0=airsensor.rrd:hum:MAX",
 "DEF:raw_humavg0=airsensor.rrd:hum:AVERAGE",
 
-"CDEF:scaled_hum=hum,0.5,*",
-"CDEF:hummins0=raw_hummins0,0.5,*",
-"CDEF:hummaxs0=raw_hummaxs0,0.5,*",
-"CDEF:humavg0=raw_humavg0,0.5,*",
+"CDEF:scaled_hum=hum,10,*",
+"CDEF:hummins0=raw_hummins0,10,*",
+"CDEF:hummaxs0=raw_hummaxs0,10,*",
+"CDEF:humavg0=raw_humavg0,0,10,*",
 "CDEF:humranges0=hummaxs0,hummins0,-",
 
 "LINE1:hummins0#a0a0FF",
