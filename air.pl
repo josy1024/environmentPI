@@ -59,7 +59,7 @@ my @opts=("-v", "°C",
 
 "--right-axis-label", "Luftqualitaet",
 "--right-axis", "20:0",
-"--right-axis-format", "%1.1lf",
+"--right-axis-format", "%1.0lf",
 
 #"--logarithmic",
 "-A",
@@ -79,10 +79,11 @@ my @otemp=(
 "AREA:tempranges0#F0808030::STACK",
 "LINE1:tempmaxs0#F08080",
 "LINE2:tempavg0#FF3333:Temp aktuell",
-'GPRINT:temp:LAST:"Jetzt T\: %5.2lf"',
-'GPRINT:tempmaxs0:MAX:"Max\: %5.2lf"',
-'GPRINT:tempmins0:MIN:"Min\: %5.2lf"\n',
-'GPRINT:tempavg0:AVERAGE:"T Avg\: %5.2lf"\n',
+
+'GPRINT:temp:LAST:"Jetzt T\: %5.1lf"',
+'GPRINT:tempavg0:AVERAGE:"T Avg\: %5.1lf"\n',
+'GPRINT:tempmins0:MIN:"Min\: %5.1lf"',
+'GPRINT:tempmaxs0:MAX:"Max\: %5.1lf"\n',
 );
 
 
@@ -103,8 +104,8 @@ my @ohum=(
 "LINE1:hummaxs0#a0a0FF",
 "LINE2:scaled_hum#0000FF:Feuchte aktuell",
 
-'GPRINT:hum:LAST:"Jetzt H\: %5.2lf"',
-'GPRINT:humavg0:AVERAGE:"H Avg\: %5.2lf"\n',
+'GPRINT:hum:LAST:"Jetzt H\: %5.1lf"',
+'GPRINT:humavg0:AVERAGE:"H Avg\: %5.1lf"\n',
 
 );
 
@@ -118,9 +119,10 @@ my @oair=(
 "CDEF:scaled_air=air,0.05,*",
 
 "LINE2:scaled_airavg0#00AF00:air aktuell",
-'GPRINT:air:LAST:"Jetzt A\: %5.2lf"',
-'GPRINT:airmins0:MIN:"A min\: %5.2lf"\n',
-'GPRINT:airmaxs0:MAX:"A max\: %5.2lf"\n',
+'GPRINT:air:LAST:"Air  \: %5.0lf"',
+'GPRINT:airavg0:AVG:"Avg \: %5.0lf"\n',
+'GPRINT:airmins0:MIN:"A min\: %5.0lf"',
+'GPRINT:airmaxs0:MAX:"A max\: %5.0lf"\n',
 
 );
 
