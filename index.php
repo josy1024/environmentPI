@@ -70,9 +70,9 @@ $w=800;
   <input type="radio" name="type" value="week" />Woche
   <input type="radio" name="type" value="month"/>Monat
   <input type="radio" name="type" value="year"/>Jahr
-  <input type="checkbox" name="offa" value="1" >A
-  <input type="checkbox" name="offt" value="1" >T
-  <input type="checkbox" name="offh" value="1" >H
+  <input type="checkbox" name="offa" value="2" checked="checked" >A
+  <input type="checkbox" name="offt" value="2" checked="checked" >T
+  <input type="checkbox" name="offh" value="2" checked="checked" >H
 </fieldset>
   <input type="submit" value="Anzeigen" class="w-button button"/>
 </div>
