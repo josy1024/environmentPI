@@ -61,7 +61,7 @@ if ($type eq "3 day") {
 
 
 # write image into temp file
-my $tmpfile="/tmp/graph_$$.png";
+my $tmpfile="/tmp/graph_air_$$.png";
 #my $tmpfile="/opt/temp/graphs/graph_$type_$$.png";
 
 my @opts=("-v", "°C",

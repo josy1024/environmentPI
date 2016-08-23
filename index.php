@@ -67,10 +67,13 @@ $w=800;
   <legend>Zeitraum</legend>
   <input type="radio" name="type" value="day" />Tag
   <input type="radio" name="type" value="3 day" checked="checked"/>3 Tage
-  <input type="radio" name="type" value="week" checked="checked"/>Woche
+  <input type="radio" name="type" value="week" />Woche
   <input type="radio" name="type" value="month"/>Monat
   <input type="radio" name="type" value="year"/>Jahr
-  </fieldset>
+  <input type="checkbox" name="offa" value="1" checked>A
+  <input type="checkbox" name="offt" value="1" checked>T
+  <input type="checkbox" name="offh" value="1" checked>H
+</fieldset>
   <input type="submit" value="Anzeigen" class="w-button button"/>
 </div>
   <input type="hidden" name="h" value="<?php echo $h ?>"/>
