@@ -70,16 +70,16 @@ $w=800;
   <input type="radio" name="type" value="week" />Woche
   <input type="radio" name="type" value="month"/>Monat
   <input type="radio" name="type" value="year"/>Jahr
-  <input type="checkbox" name="offa" value="1" checked>A
-  <input type="checkbox" name="offt" value="1" checked>T
-  <input type="checkbox" name="offh" value="1" checked>H
+  <input type="checkbox" name="offa" value="1" >A
+  <input type="checkbox" name="offt" value="1" >T
+  <input type="checkbox" name="offh" value="1" >H
 </fieldset>
   <input type="submit" value="Anzeigen" class="w-button button"/>
 </div>
   <input type="hidden" name="h" value="<?php echo $h ?>"/>
   <input type="hidden" name="w" value="<?php echo $w ?>"/>
   </form><iframe marginwidth="0" marginheight="0" frameborder="0" width="<?php echo $w; ?>" height="<?php echo $h; ?>" name="air"
-  src="air.pl?type=week&w=<?php echo $w; ?>&h=<?php echo $h; ?>">
+  src="air.pl?type=3 day&w=<?php echo $w; ?>&h=<?php echo $h; ?>">
 </iframe>
 </p>
 
