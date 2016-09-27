@@ -7,7 +7,7 @@ use strict;
 
 
 # path to database
-my $rrd='/opt/temp/temperature.rrd';
+my $rrd='/opt/data/temperature.rrd';
 
 # size
 my $width=420;

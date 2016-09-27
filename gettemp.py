@@ -58,8 +58,8 @@ import subprocess
 subprocess.call("/opt/temp/am2302.sh")
 
 patham2302 = (
-  "/opt/temp/dht_gpio7_temp.txt",
-  "/opt/temp/dht_gpio7_hum.txt",
+  "/opt/data/dht_gpio7_temp.txt",
+  "/opt/data/dht_gpio7_hum.txt",
 )
 
 # update rrd file for am2302
@@ -76,9 +76,9 @@ rrdtool.update(
 
 subprocess.call("/opt/temp/airsensor.sh")
 pathairsensor = (
-  "/opt/temp/airsensor.txt",
-  "/opt/temp/dht_gpio7_hum.txt",
-  "/opt/temp/dht_gpio7_temp.txt",
+  "/opt/data/airsensor.txt",
+  "/opt/data/dht_gpio7_hum.txt",
+  "/opt/data/dht_gpio7_temp.txt",
 )
 
 # update rrd file for airsensor

@@ -7,7 +7,7 @@ use strict;
 
 
 # path to database
-my $rrd='/opt/temp/am2302.rrd';
+my $rrd='/opt/data/am2302.rrd';
 
 my $query=new CGI;
 

@@ -7,7 +7,7 @@ MAXTEMP=60
 MINHUM=0
 MAXHUM=100
  
-TEMPDIR=/opt/temp
+TEMPDIR=/opt/data
 GPIO=7
 
 INPUT=`/opt/am2302/lol_dht22/loldht $GPIO | /bin/grep "Temperature"`

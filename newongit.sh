@@ -42,6 +42,9 @@ cd /opt
 #git bash added git repository
 git clone https://github.com/josy1024/environmentPI.git temp
 
+#crontab:
+#  * 18 * * * cd /opt/temp && /usr/bin/git pull origin master
+
 ## w1 temperatur
 
 #/boot/config.txt
@@ -98,3 +101,28 @@ cd /opt/airsensor
 wget https://raw.githubusercontent.com/jschanz/usb-sensors-linux/master/airsensor/airsensor.c
 
 gcc -o airsensor airsensor.c -lusb
+
+
+## APACHE
+# https://www.howtoforge.com/installing-lighttpd-with-php5-php-fpm-and-mysql-on-ubuntu-14.04-lts#-installing-lighttpd
+apt-get install lighttpd php5-fpm php5 php5-curl 
+lighttpd-enable-mod fastcgi
+lighttpd-enable-mod fastcgi-php
+
+lighttpd-enable-mod cgi
+
+
+## XIVELEY LOG:
+sudo apt-get install python-setuptools
+sudo easy_install pip
+sudo pip install virtualenv
+
+https://personal.xively.com/dev/tutorials/pi/#setup-pi
+
+mkdir /opt/xively_tutorial
+cd /opt/xively_tutorial
+
+virtualenv .envs/venv
+source .envs/venv/bin/activate
+pip install xively-python
+pip install --pre xively-python

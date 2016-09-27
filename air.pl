@@ -11,7 +11,7 @@ use strict;
 
 
 # path to database
-my $rrd='/opt/temp/airsensor.rrd';
+my $rrd='/opt/data/airsensor.rrd';
 
 my $query=new CGI;
 
