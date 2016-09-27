@@ -20,6 +20,7 @@ VALUE=${VALUE/.*}
 VAL_HUM=$VALUE
 
 MESSAGE="A: ${VAL_AIR}, T: ${VAL_TEMP}, H: ${VAL_HUM}"
+echo $MESSAGE
 
 STATEFILE=$TEMPDIR/airsensor.high
 

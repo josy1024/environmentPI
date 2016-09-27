@@ -101,8 +101,9 @@ def run():
   sensorair = read_sensorair()
 
   if DEBUG:
-    print "Updating Xively feed with value: %s" % sensor
-    print "Updating Xively feed with value: %s" % sensorhum
+    print "Updating Xively temp feed with value: %s" % sensor
+    print "Updating Xively hum  feed with value: %s" % sensorhum
+    print "Updating Xively air  feed with value: %s" % sensorair
 
   datastream.current_value = sensor
   datastream.at = datetime.datetime.utcnow()
