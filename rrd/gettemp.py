@@ -94,4 +94,4 @@ try:
     
 finally:  
   # CALL xivley update script for the data
-  subprocess.call("/opt/secure/xively.sh")
+  #subprocess.call("/opt/secure/xively.sh")

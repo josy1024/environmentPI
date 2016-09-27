@@ -32,6 +32,7 @@ git push origin master
 
 apt-get install make gcc
 apt-get install build-essential
+apt-get install bc
 
 
 #
