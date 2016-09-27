@@ -22,6 +22,13 @@ VAL_HUM=$VALUE
 MESSAGE="A: ${VAL_AIR}, T: ${VAL_TEMP}, H: ${VAL_HUM}"
 echo $MESSAGE
 
+STATEFILE=$TEMPDIR/sendstatus
+
+if [ ! -e "$STATEFILE" ]; then
+    /usr/bin/php $BOT/tele.php "${MESSAGE} I'm online :-)"
+    touch $STATEFILE
+fi
+
 STATEFILE=$TEMPDIR/airsensor.high
 
 # hysterese ab 1300, unter 1000 entwarnung
