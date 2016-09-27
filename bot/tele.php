@@ -1,6 +1,9 @@
 <?php
 
-include "config.php";
+#include "config.php";
+
+# bot token file
+include "/opt/secure/telegram.php";
 
 #define('BOT_TOKEN', '12345678:replace-me-with-real-token');
 define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
