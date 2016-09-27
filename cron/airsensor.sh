@@ -7,6 +7,8 @@ BOT=/opt/temp/bot
 
 /opt/airsensor/./airsensor -o -v >  $TEMPDIR/airsensor.txt
 
+# /opt/temp/cron/am2302.sh
+
 VALUE=`cat $TEMPDIR/airsensor.txt`
 VAL_AIR=$VALUE
 VALUE=`cat $TEMPDIR/dht_gpio7_temp.txt`
