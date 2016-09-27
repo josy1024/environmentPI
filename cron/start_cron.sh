@@ -1,6 +1,9 @@
 #!/bin/bash
 #Scriptname: start_cron.sh
- 
+
+# execute right for script:
+# git update-index --chmod=+x start_cron.sh
+
 #  */10 5-23 * * * /opt/temp/cron/start_cron.sh  >/dev/null
 
 /opt/temp/cron/am2302.sh
