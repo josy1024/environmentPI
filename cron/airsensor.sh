@@ -1,5 +1,5 @@
 #!/bin/bash
-#Scriptname: am2302.sh
+#Scriptname: airsensor.sh
  
 # based on: https://klenzel.de/1827
 TEMPDIR=/opt/data

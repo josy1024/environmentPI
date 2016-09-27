@@ -6,7 +6,7 @@
 
 # aufruf ueber crontab:
 #FEED_ID=xxx API_KEY=key DEBUG=false python /opt/xively_tutorial/temp1.py >/dev/null
-#FEED_ID=xxx API_KEY=key DEBUG=false python /opt/temp/am2302.py >/dev/null
+#FEED_ID=xxx API_KEY=key DEBUG=false python /opt/temp/cron/am2302.py >/dev/null
 
 
 import os
@@ -29,20 +29,20 @@ def read_sensorhum():
   if DEBUG:
     print "Reading hum" 
 #  return subprocess.check_output(["rrdtool lastupdate /opt/temp/temperature.rrd | tail -1 | /usr/bin/awk '{print $2}'"], shell=True)
-  return subprocess.check_output(["cat /opt/temp/dht_gpio7_hum.txt"], shell=True)
+  return subprocess.check_output(["cat /opt/data/dht_gpio7_hum.txt"], shell=True)
 #  return subprocess.check_output(["awk '{print $1}' /proc/loadavg"], shell=True)
 
 def read_sensortemp():
   if DEBUG:
     print "Reading temp"
 #  return subprocess.check_output(["rrdtool lastupdate /opt/temp/temperature.rrd | tail -1 | /usr/bin/awk '{print $2}'"], shell=True)
-  return subprocess.check_output(["cat /opt/temp/dht_gpio7_temp.txt"], shell=True)
+  return subprocess.check_output(["cat /opt/data/dht_gpio7_temp.txt"], shell=True)
   
 def read_sensorair():
   if DEBUG:
     print "Reading air"
 #  return subprocess.check_output(["rrdtool lastupdate /opt/temp/temperature.rrd | tail -1 | /usr/bin/awk '{print $2}'"], shell=True)
-  return subprocess.check_output(["cat /opt/temp/airsensor.txt"], shell=True)
+  return subprocess.check_output(["cat /opt/data/airsensor.txt"], shell=True)
   
 #
 # function to return a datastream object. This either creates a new datastream,

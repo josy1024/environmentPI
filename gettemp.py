@@ -55,7 +55,7 @@ rrdtool.update(
 import subprocess
 
 # get the data and write them to .txt files
-subprocess.call("/opt/temp/am2302.sh")
+subprocess.call("/opt/temp/cron/am2302.sh")
 
 patham2302 = (
   "/opt/data/dht_gpio7_temp.txt",
@@ -74,7 +74,7 @@ rrdtool.update(
 
 #airsensornofify telegram 
 
-subprocess.call("/opt/temp/airsensor.sh")
+subprocess.call("/opt/temp/cron/airsensor.sh")
 pathairsensor = (
   "/opt/data/airsensor.txt",
   "/opt/data/dht_gpio7_hum.txt",
@@ -94,4 +94,4 @@ try:
     
 finally:  
   # CALL xivley update script for the data
-  subprocess.call("/opt/xively_tutorial/crontab.sh")
+  subprocess.call("/opt/secure/xively.sh")
