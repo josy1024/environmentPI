@@ -104,6 +104,8 @@ def run():
   try:
     file = open('/opt/data/' + filever + '.sent', 'r')
     oldsensor = file.readline()
+  except:
+    pass
 
   if DEBUG:
     print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor)
@@ -127,6 +129,8 @@ def run():
   try:
     file = open('/opt/data/' + filever + '.sent', 'r')
     oldsensor = file.readline()
+  except:
+    pass
 
   if DEBUG:
     print "Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor)
@@ -150,6 +154,8 @@ def run():
   try:
     file = open('/opt/data/' + filever + '.sent', 'r')
     oldsensor = file.readline()
+  except:
+    pass
 
   if DEBUG:
     print "Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor)
