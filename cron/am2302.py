@@ -102,7 +102,7 @@ def run():
 
   filever = "dht_gpio7_temp.txt"
   file = open('/opt/data/' + filever + '.sent', 'r')
-  oldsensor = file.readline():
+  oldsensor = file.readline()
 
   if DEBUG:
     print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor))
@@ -127,7 +127,7 @@ def run():
 
   filever = 'dht_gpio7_hum.txt'
   file = open('/opt/data/' + filever + '.sent', 'r')
-  oldsensor = file.readline():
+  oldsensor = file.readline()
 
   if DEBUG:
     print "Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor)) 
@@ -150,7 +150,7 @@ def run():
 
   filever = 'airsensor.txt'
   file = open('/opt/data/' + filever + '.sent', 'r')
-  oldsensor = file.readline():
+  oldsensor = file.readline()
 
   if DEBUG:
     print "Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor)) 
