@@ -108,7 +108,6 @@ def run():
   except:
     pass
 
-
   if abs( (float(sensor) - float(oldsensor)) / float(sensor) ) > compareprozent:
     if DEBUG:
       print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor))
@@ -134,18 +133,19 @@ def run():
   except:
     pass
 
-  if DEBUG:
-    print ("Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor))
+  if abs( (float(sensorhum) - float(oldsensor)) / float(sensorhum) ) > compareprozent:
+    if DEBUG:
+      print ("Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor))
 
-  datastreamhum.current_value = sensorhum
-  datastreamhum.at = datetime.datetime.utcnow()
-  try:
-    datastreamhum.update()
-    file = open('/opt/data/' + filever + '.sent', "w")
-    file.write(datastream.current_value)
-    file.close()
-  except requests.HTTPError as e:
-    print "HTTPError({0}): {1}".format(e.errno, e.strerror)
+    datastreamhum.current_value = sensorhum
+    datastreamhum.at = datetime.datetime.utcnow()
+    try:
+      datastreamhum.update()
+      file = open('/opt/data/' + filever + '.sent', "w")
+      file.write(datastreamhum.current_value)
+      file.close()
+    except requests.HTTPError as e:
+      print "HTTPError({0}): {1}".format(e.errno, e.strerror)
 
 
   datastreamair = get_datastreamair(feed)
@@ -159,18 +159,19 @@ def run():
   except:
     pass
 
-  if DEBUG:
-    print ("Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor))
+  if abs( (float(sensorair) - float(oldsensor)) / float(sensorair) ) > compareprozent:
+    if DEBUG:
+      print ("Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor))
 
-  datastreamair.current_value = sensorair
-  datastreamair.at = datetime.datetime.utcnow()
-  try:
-    datastreamair.update()
-    file = open('/opt/data/' + filever + '.sent', "w")
-    file.write(datastream.current_value)
-    file.close()
-  except requests.HTTPError as e:
-    print "HTTPError({0}): {1}".format(e.errno, e.strerror)
+    datastreamair.current_value = sensorair
+    datastreamair.at = datetime.datetime.utcnow()
+    try:
+      datastreamair.update()
+      file = open('/opt/data/' + filever + '.sent', "w")
+      file.write(datastreamair.current_value)
+      file.close()
+    except requests.HTTPError as e:
+      print "HTTPError({0}): {1}".format(e.errno, e.strerror)
     
 #    time.sleep(10)
 
