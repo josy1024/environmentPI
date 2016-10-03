@@ -110,6 +110,8 @@ def run():
   if DEBUG:
     print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor))
 
+  print abs((sensor-oldsensor) / sensor)
+
   datastream.current_value = sensor
   datastream.at = datetime.datetime.utcnow()
   try:
