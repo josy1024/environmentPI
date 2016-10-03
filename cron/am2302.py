@@ -159,19 +159,20 @@ def run():
   except:
     pass
 
-  if abs( (float(sensorair) - float(oldsensor)) / float(sensorair) ) > compareprozent:
-    if DEBUG:
-      print ("Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor))
+  if sensorair > 0:
+    if abs( (float(sensorair) - float(oldsensor)) / float(sensorair) ) > compareprozent:
+      if DEBUG:
+        print ("Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor))
 
-    datastreamair.current_value = sensorair
-    datastreamair.at = datetime.datetime.utcnow()
-    try:
-      datastreamair.update()
-      file = open('/opt/data/' + filever + '.sent', "w")
-      file.write(datastreamair.current_value)
-      file.close()
-    except requests.HTTPError as e:
-      print "HTTPError({0}): {1}".format(e.errno, e.strerror)
+      datastreamair.current_value = sensorair
+      datastreamair.at = datetime.datetime.utcnow()
+      try:
+        datastreamair.update()
+        file = open('/opt/data/' + filever + '.sent', "w")
+        file.write(datastreamair.current_value)
+        file.close()
+      except requests.HTTPError as e:
+        print "HTTPError({0}): {1}".format(e.errno, e.strerror)
     
 #    time.sleep(10)
 
