@@ -91,7 +91,7 @@ def run():
   print "Starting Xively tutorial script"
 
   feed = api.feeds.get(FEED_ID)
-
+  oldsensor = "0"
   datastream = get_datastream(feed)
   datastream.max_value = None
   datastream.min_value = None
@@ -101,8 +101,9 @@ def run():
   sensorair = read_sensorair()
 
   filever = "dht_gpio7_temp.txt"
-  file = open('/opt/data/' + filever + '.sent', 'r')
-  oldsensor = file.readline()
+  try:
+    file = open('/opt/data/' + filever + '.sent', 'r')
+    oldsensor = file.readline()
 
   if DEBUG:
     print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor)
@@ -116,20 +117,20 @@ def run():
     file.close()
   except requests.HTTPError as e:
     print "HTTPError({0}): {1}".format(e.errno, e.strerror)
- 
-  
+
+
   datastreamhum = get_datastreamhum(feed)
   datastreamhum.max_value = None
   datastreamhum.min_value = None
 
   filever = 'dht_gpio7_hum.txt'
-  file = open('/opt/data/' + filever + '.sent', 'r')
-  oldsensor = file.readline()
+  try:
+    file = open('/opt/data/' + filever + '.sent', 'r')
+    oldsensor = file.readline()
 
   if DEBUG:
     print "Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor)
 
-    
   datastreamhum.current_value = sensorhum
   datastreamhum.at = datetime.datetime.utcnow()
   try:
@@ -146,8 +147,9 @@ def run():
   datastreamair.min_value = None
 
   filever = 'airsensor.txt'
-  file = open('/opt/data/' + filever + '.sent', 'r')
-  oldsensor = file.readline()
+  try:
+    file = open('/opt/data/' + filever + '.sent', 'r')
+    oldsensor = file.readline()
 
   if DEBUG:
     print "Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor)
