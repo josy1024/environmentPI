@@ -13,7 +13,8 @@ GPIO=7
 INPUT=`/opt/am2302/lol_dht22/loldht $GPIO | /bin/grep "Temperature"`
 HUM=$(echo $INPUT|cut -d " " -f3)
 TEMP=$(echo $INPUT|cut -d " " -f7)
- 
+
+# der wert muss zwischen den min und max werten liegen 
 if [ $(echo "if (${HUM} > ${MAXHUM}) 1 else 0" | bc) -eq 1 -o $(echo "if (${HUM} < ${MINHUM}) 1 else 0" | bc) -eq 1 ]; then
     if [ -f $TEMPDIR/dht_gpio${GPIO}_hum.txt ]; then
         cat $TEMPDIR/dht_gpio${GPIO}_hum.txt

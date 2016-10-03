@@ -100,27 +100,46 @@ def run():
   sensorhum = read_sensorhum()
   sensorair = read_sensorair()
 
+  filever = "dht_gpio7_temp.txt"
+  file = open('/opt/data/' + filever + '.sent', 'r')
+  oldsensor = file.readline():
+
   if DEBUG:
-    print "Updating Xively temp feed with value: %s" % sensor
-    print "Updating Xively hum  feed with value: %s" % sensorhum
-    print "Updating Xively air  feed with value: %s" % sensorair
+    print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor))
+
+
+  # compare with old sent data  
 
   datastream.current_value = sensor
   datastream.at = datetime.datetime.utcnow()
   try:
     datastream.update()
+    file = open('/opt/data/' + filever + '.sent', "w")
+    file.write(datastream.current_value)
+    file.close()
   except requests.HTTPError as e:
     print "HTTPError({0}): {1}".format(e.errno, e.strerror)
-
+ 
+  
   datastreamhum = get_datastreamhum(feed)
   datastreamhum.max_value = None
   datastreamhum.min_value = None
 
+  filever = 'dht_gpio7_hum.txt'
+  file = open('/opt/data/' + filever + '.sent', 'r')
+  oldsensor = file.readline():
 
+  if DEBUG:
+    print "Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor)) 
+
+    
   datastreamhum.current_value = sensorhum
   datastreamhum.at = datetime.datetime.utcnow()
   try:
     datastreamhum.update()
+    file = open('/opt/data/' + filever + '.sent', "w")
+    file.write(datastream.current_value)
+    file.close()
   except requests.HTTPError as e:
     print "HTTPError({0}): {1}".format(e.errno, e.strerror)
 
@@ -129,11 +148,20 @@ def run():
   datastreamair.max_value = None
   datastreamair.min_value = None
 
+  filever = 'airsensor.txt'
+  file = open('/opt/data/' + filever + '.sent', 'r')
+  oldsensor = file.readline():
+
+  if DEBUG:
+    print "Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor)) 
 
   datastreamair.current_value = sensorair
   datastreamair.at = datetime.datetime.utcnow()
   try:
     datastreamair.update()
+    file = open('/opt/data/' + filever + '.sent', "w")
+    file.write(datastream.current_value)
+    file.close()
   except requests.HTTPError as e:
     print "HTTPError({0}): {1}".format(e.errno, e.strerror)
     
