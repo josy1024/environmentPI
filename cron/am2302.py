@@ -108,7 +108,7 @@ def run():
     pass
 
   if DEBUG:
-    print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor)
+    print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor))
 
   datastream.current_value = sensor
   datastream.at = datetime.datetime.utcnow()
@@ -133,7 +133,7 @@ def run():
     pass
 
   if DEBUG:
-    print "Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor)
+    print ("Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor))
 
   datastreamhum.current_value = sensorhum
   datastreamhum.at = datetime.datetime.utcnow()
@@ -158,7 +158,7 @@ def run():
     pass
 
   if DEBUG:
-    print "Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor)
+    print ("Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor))
 
   datastreamair.current_value = sensorair
   datastreamair.at = datetime.datetime.utcnow()
