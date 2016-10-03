@@ -90,6 +90,7 @@ def get_datastreamair(feed):
 def run():
   print "Starting Xively tutorial script"
 
+  compareprozent = 1
   feed = api.feeds.get(FEED_ID)
   oldsensor = "0"
   datastream = get_datastream(feed)
@@ -107,20 +108,19 @@ def run():
   except:
     pass
 
-  if DEBUG:
-    print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor))
 
-  print abs( (float(sensor) - float(oldsensor)) / float(sensor) )
-
-  datastream.current_value = sensor
-  datastream.at = datetime.datetime.utcnow()
-  try:
-    datastream.update()
-    file = open('/opt/data/' + filever + '.sent', "w")
-    file.write(datastream.current_value)
-    file.close()
-  except requests.HTTPError as e:
-    print "HTTPError({0}): {1}".format(e.errno, e.strerror)
+  if abs( (float(sensor) - float(oldsensor)) / float(sensor) ) > compareprozent:
+    if DEBUG:
+      print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor))
+    datastream.current_value = sensor
+    datastream.at = datetime.datetime.utcnow()
+    try:
+      datastream.update()
+      file = open('/opt/data/' + filever + '.sent', "w")
+      file.write(datastream.current_value)
+      file.close()
+    except requests.HTTPError as e:
+      print "HTTPError({0}): {1}".format(e.errno, e.strerror)
 
 
   datastreamhum = get_datastreamhum(feed)
