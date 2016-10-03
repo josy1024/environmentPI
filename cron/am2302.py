@@ -110,7 +110,7 @@ def run():
   if DEBUG:
     print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor))
 
-  print abs( float(sensor) - float(oldsensor) / float(sensor) )
+  print abs( (float(sensor) - float(oldsensor)) / float(sensor) )
 
   datastream.current_value = sensor
   datastream.at = datetime.datetime.utcnow()
