@@ -105,7 +105,7 @@ def run():
   oldsensor = file.readline()
 
   if DEBUG:
-    print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor))
+    print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor)
 
 
   # compare with old sent data  
@@ -130,7 +130,7 @@ def run():
   oldsensor = file.readline()
 
   if DEBUG:
-    print "Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor)) 
+    print "Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor)
 
     
   datastreamhum.current_value = sensorhum
@@ -153,7 +153,7 @@ def run():
   oldsensor = file.readline()
 
   if DEBUG:
-    print "Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor)) 
+    print "Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor)
 
   datastreamair.current_value = sensorair
   datastreamair.at = datetime.datetime.utcnow()
