@@ -159,7 +159,7 @@ def run():
   except:
     pass
 
-  if sensorair > 0:
+  if float(sensorair) > 10:
     if abs( (float(sensorair) - float(oldsensor)) / float(sensorair) ) > compareprozent:
       if DEBUG:
         print ("Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor))
