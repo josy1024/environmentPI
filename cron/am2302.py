@@ -134,10 +134,9 @@ def run():
   except:
     pass
 
-  if DEBUG:
-    print ("Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor))
-
   if abs( (float(sensorhum) - float(oldsensor)) / float(sensorhum) ) > compareprozent:
+    if DEBUG:
+      print ("Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor))
     datastreamhum.current_value = sensorhum
     datastreamhum.at = datetime.datetime.utcnow()
     try:
@@ -147,7 +146,8 @@ def run():
       file.close()
     except requests.HTTPError as e:
       print "HTTPError({0}): {1}".format(e.errno, e.strerror)
-
+    if DEBUG:
+      print ("minimal change:" + abs( (float(sensorhum) - float(oldsensor)) / float(sensorhum) ))
 
   datastreamair = get_datastreamair(feed)
   datastreamair.max_value = None
