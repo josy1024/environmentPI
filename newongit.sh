@@ -127,3 +127,8 @@ virtualenv .envs/venv
 source .envs/venv/bin/activate
 pip install xively-python
 pip install --pre xively-python
+
+## vscode
+## https://code.visualstudio.com/docs/languages/python
+python
+python -m pip install pylint autopep8
