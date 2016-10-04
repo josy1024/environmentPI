@@ -109,7 +109,8 @@ def run():
   except:
     pass
 
-  if abs( (float(sensor) - float(oldsensor)) / float(sensor) ) > compareprozent:
+  comparevalue = abs( (float(sensor) - float(oldsensor)) / float(sensor) )
+  if  comparevalue > compareprozent
     if DEBUG:
       print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor))
     datastream.current_value = sensor
@@ -121,7 +122,9 @@ def run():
       file.close()
     except requests.HTTPError as e:
       print "HTTPError({0}): {1}".format(e.errno, e.strerror)
-
+  else:l
+    if DEBUG:
+      print ("minimal change:" + comparevalue
 
   datastreamhum = get_datastreamhum(feed)
   datastreamhum.max_value = None
@@ -133,8 +136,9 @@ def run():
     oldsensor = file.readline()
   except:
     pass
-
-  if abs( (float(sensorhum) - float(oldsensor)) / float(sensorhum) ) > compareprozent:
+  
+  comparevalue = abs( (float(sensorhum) - float(oldsensor)) / float(sensorhum) )
+  if  comparevalue > compareprozent:
     if DEBUG:
       print ("Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor))
     datastreamhum.current_value = sensorhum
@@ -146,8 +150,9 @@ def run():
       file.close()
     except requests.HTTPError as e:
       print "HTTPError({0}): {1}".format(e.errno, e.strerror)
+  else:
     if DEBUG:
-      print ("minimal change:" + abs( (float(sensorhum) - float(oldsensor)) / float(sensorhum) ))
+      print ("minimal change:" + comparevalue
 
   datastreamair = get_datastreamair(feed)
   datastreamair.max_value = None
@@ -161,7 +166,8 @@ def run():
     pass
 
   if float(sensorair) > 10:
-    if abs( (float(sensorair) - float(oldsensor)) / float(sensorair) ) > compareprozent:
+    comparevalue = abs( (float(sensorair) - float(oldsensor)) / float(sensorair) )
+    if  comparevalue > compareprozent:
       if DEBUG:
         print ("Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor))
 
@@ -174,7 +180,9 @@ def run():
         file.close()
       except requests.HTTPError as e:
         print "HTTPError({0}): {1}".format(e.errno, e.strerror)
-    
+    else:
+      if DEBUG:
+        print ("minimal change:" + comparevalue
 #    time.sleep(10)
 
 run()
