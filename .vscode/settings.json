@@ -1,6 +1,6 @@
 // Platzieren Sie Ihre Einstellungen in dieser Datei, um Standard- und Benutzereinstellungen zu überschreiben.
 {
     
-    "php.validate.executablePath":"C:/ProgramData/php/php7/php.exe"
-    
+    "php.validate.executablePath":"C:/ProgramData/php/php7/php.exe",
+    "python.pythonPath": "C:/Program Files/Python35/python.exe"
 }
