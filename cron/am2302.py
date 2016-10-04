@@ -133,7 +133,7 @@ def run():
   filever = 'dht_gpio7_hum.txt'
   try:
     file = open('/opt/data/' + filever + '.sent', 'r')
-    oldsensor = file.readline()
+    oldsensor = file.readline() 
   except:
     pass
   
