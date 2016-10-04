@@ -183,7 +183,5 @@ def run():
     else:
       if DEBUG:
         print ("minimal change:" + comparevalue )
-        print ("minimal change:" + comparevalue 
-#    time.sleep(10)
 
 run()

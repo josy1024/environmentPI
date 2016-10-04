@@ -2,5 +2,7 @@
 {
     
     "php.validate.executablePath":"C:/ProgramData/php/php7/php.exe",
-    "python.pythonPath": "C:/Program Files/Python35/python.exe"
+    "python.pythonPath": "C:/Program Files/Python35/python.exe",
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": false
 }
