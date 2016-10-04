@@ -124,7 +124,7 @@ def run():
       print "HTTPError({0}): {1}".format(e.errno, e.strerror)
   else:
     if DEBUG:
-      print ("minimal change:" + comparevalue )
+      print ("minimal change: %s " % comparevalue )
 
   datastreamhum = get_datastreamhum(feed)
   datastreamhum.max_value = None
@@ -152,7 +152,7 @@ def run():
       print "HTTPError({0}): {1}".format(e.errno, e.strerror)
   else:
     if DEBUG:
-      print ("minimal change:" + comparevalue )
+      print ("minimal change: %s " % comparevalue )
 
   datastreamair = get_datastreamair(feed)
   datastreamair.max_value = None
@@ -182,6 +182,6 @@ def run():
         print "HTTPError({0}): {1}".format(e.errno, e.strerror)
     else:
       if DEBUG:
-        print ("minimal change:" + comparevalue )
+        print ("minimal change: %s " % comparevalue )
 
 run()
