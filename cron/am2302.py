@@ -90,7 +90,8 @@ def get_datastreamair(feed):
 def run():
   print "Starting Xively tutorial script"
 
-  compareprozent = 1
+  # ein prozent!!
+  compareprozent = 0.01
   feed = api.feeds.get(FEED_ID)
   oldsensor = "0"
   datastream = get_datastream(feed)
@@ -133,10 +134,10 @@ def run():
   except:
     pass
 
-  if abs( (float(sensorhum) - float(oldsensor)) / float(sensorhum) ) > compareprozent:
-    if DEBUG:
-      print ("Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor))
+  if DEBUG:
+    print ("Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor))
 
+  if abs( (float(sensorhum) - float(oldsensor)) / float(sensorhum) ) > compareprozent:
     datastreamhum.current_value = sensorhum
     datastreamhum.at = datetime.datetime.utcnow()
     try:
