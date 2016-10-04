@@ -122,7 +122,7 @@ def run():
       file.close()
     except requests.HTTPError as e:
       print "HTTPError({0}): {1}".format(e.errno, e.strerror)
-  else:l
+  else:
     if DEBUG:
       print ("minimal change:" + comparevalue
 
