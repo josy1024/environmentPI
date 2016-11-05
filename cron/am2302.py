@@ -27,20 +27,20 @@ api = xively.XivelyAPIClient(API_KEY)
 # function to read 1 minute load average from system uptime command
 def read_sensorhum():
   if DEBUG:
-    print "Reading hum" 
+    print ("Reading hum")
 #  return subprocess.check_output(["rrdtool lastupdate /opt/temp/temperature.rrd | tail -1 | /usr/bin/awk '{print $2}'"], shell=True)
   return subprocess.check_output(["cat /opt/data/dht_gpio7_hum.txt"], shell=True)
 #  return subprocess.check_output(["awk '{print $1}' /proc/loadavg"], shell=True)
 
 def read_sensortemp():
   if DEBUG:
-    print "Reading temp"
+    print ("Reading temp")
 #  return subprocess.check_output(["rrdtool lastupdate /opt/temp/temperature.rrd | tail -1 | /usr/bin/awk '{print $2}'"], shell=True)
   return subprocess.check_output(["cat /opt/data/dht_gpio7_temp.txt"], shell=True)
   
 def read_sensorair():
   if DEBUG:
-    print "Reading air"
+    print ("Reading air")
 #  return subprocess.check_output(["rrdtool lastupdate /opt/temp/temperature.rrd | tail -1 | /usr/bin/awk '{print $2}'"], shell=True)
   return subprocess.check_output(["cat /opt/data/airsensor.txt"], shell=True)
   
@@ -51,11 +51,11 @@ def get_datastream(feed):
   try:
     datastream = feed.datastreams.get("Temperatur_am2302")
     if DEBUG:
-      print "Found existing datastream"
+      print ("Found existing datastream")
     return datastream
   except:
     if DEBUG:
-      print "Creating new datastream"
+      print ("Creating new datastream")
     datastream = feed.datastreams.create("Temperatur_am2302", tags="temp")
     return datastream
 
@@ -64,11 +64,11 @@ def get_datastreamhum(feed):
   try:
     datastream = feed.datastreams.get("Feuchte_am2302")
     if DEBUG:
-      print "Found existing datastream"
+      print ("Found existing datastream")
     return datastream
   except:
     if DEBUG:
-      print "Creating new datastream"
+      print ("Creating new datastream")
     datastream = feed.datastreams.create("Feuchte_am2302", tags="hum")
     return datastream
 
@@ -76,11 +76,11 @@ def get_datastreamair(feed):
   try:
     datastream = feed.datastreams.get("airsensor")
     if DEBUG:
-      print "Found existing datastream"
+      print ("Found existing datastream")
     return datastream
   except:
     if DEBUG:
-      print "Creating new datastream"
+      print ("Creating new datastream")
     datastream = feed.datastreams.create("airsensor", tags="air")
     return datastream
 
@@ -88,7 +88,11 @@ def get_datastreamair(feed):
 # main program entry point - runs continuously updating our datastream with the
 # current 1 minute load average
 def run():
-  print "Starting Xively tutorial script"
+  print ("Starting Xively tutorial script")
+
+  # ein prozent!!
+  compareprozentair = 0.01
+  compareprozent = 0.008
 
   feed = api.feeds.get(FEED_ID)
   oldsensor = "0"
@@ -107,21 +111,22 @@ def run():
   except:
     pass
 
-  if DEBUG:
-    print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor))
-
-  print abs( float(sensor) - float(oldsensor) / float(sensor) )
-
-  datastream.current_value = sensor
-  datastream.at = datetime.datetime.utcnow()
-  try:
-    datastream.update()
-    file = open('/opt/data/' + filever + '.sent', "w")
-    file.write(datastream.current_value)
-    file.close()
-  except requests.HTTPError as e:
-    print "HTTPError({0}): {1}".format(e.errno, e.strerror)
-
+  comparevalue = abs( (float(sensor) - float(oldsensor)) / float(sensor) )
+  if comparevalue > compareprozent:
+    if DEBUG:
+      print("Updating Xively temp feed with value: %s old %s  " % (sensor, oldsensor))
+    datastream.current_value = sensor
+    datastream.at = datetime.datetime.utcnow()
+    try:
+      datastream.update()
+      file = open('/opt/data/' + filever + '.sent', "w")
+      file.write(datastream.current_value)
+      file.close()
+    except requests.HTTPError as e:
+      print ("HTTPError({0}): {1}".format(e.errno, e.strerror))
+  else:
+    if DEBUG:
+      print ("minimal change: %s " % comparevalue )
 
   datastreamhum = get_datastreamhum(feed)
   datastreamhum.max_value = None
@@ -130,23 +135,26 @@ def run():
   filever = 'dht_gpio7_hum.txt'
   try:
     file = open('/opt/data/' + filever + '.sent', 'r')
-    oldsensor = file.readline()
+    oldsensor = file.readline() 
   except:
     pass
-
-  if DEBUG:
-    print ("Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor))
-
-  datastreamhum.current_value = sensorhum
-  datastreamhum.at = datetime.datetime.utcnow()
-  try:
-    datastreamhum.update()
-    file = open('/opt/data/' + filever + '.sent', "w")
-    file.write(datastream.current_value)
-    file.close()
-  except requests.HTTPError as e:
-    print "HTTPError({0}): {1}".format(e.errno, e.strerror)
-
+  
+  comparevalue = abs( (float(sensorhum) - float(oldsensor)) / float(sensorhum) )
+  if comparevalue > compareprozent:
+    if DEBUG:
+      print ("Updating Xively hum  feed with value: %s old %s  " % (sensorhum, oldsensor))
+    datastreamhum.current_value = sensorhum
+    datastreamhum.at = datetime.datetime.utcnow()
+    try:
+      datastreamhum.update()
+      file = open('/opt/data/' + filever + '.sent', "w")
+      file.write(datastreamhum.current_value)
+      file.close()
+    except requests.HTTPError as e:
+      print ("HTTPError({0}): {1}".format(e.errno, e.strerror))
+  else:
+    if DEBUG:
+      print ("minimal change: %s " % comparevalue )
 
   datastreamair = get_datastreamair(feed)
   datastreamair.max_value = None
@@ -159,19 +167,23 @@ def run():
   except:
     pass
 
-  if DEBUG:
-    print ("Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor))
+  if float(sensorair) > 10:
+    comparevalue = abs( (float(sensorair) - float(oldsensor)) / float(sensorair) )
+    if comparevalue > compareprozentair:
+      if DEBUG:
+        print ("Updating Xively air  feed with value: %s old %s  " % (sensorair, oldsensor))
 
-  datastreamair.current_value = sensorair
-  datastreamair.at = datetime.datetime.utcnow()
-  try:
-    datastreamair.update()
-    file = open('/opt/data/' + filever + '.sent', "w")
-    file.write(datastream.current_value)
-    file.close()
-  except requests.HTTPError as e:
-    print "HTTPError({0}): {1}".format(e.errno, e.strerror)
-    
-#    time.sleep(10)
+      datastreamair.current_value = sensorair
+      datastreamair.at = datetime.datetime.utcnow()
+      try:
+        datastreamair.update()
+        file = open('/opt/data/' + filever + '.sent', "w")
+        file.write(datastreamair.current_value)
+        file.close()
+      except requests.HTTPError as e:
+        print ("HTTPError({0}): {1}".format(e.errno, e.strerror))
+    else:
+      if DEBUG:
+        print ("minimal change: %s " % comparevalue )
 
 run()
