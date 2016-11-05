@@ -23,4 +23,5 @@
 #source /opt/xively_tutorial/.envs/venv/bin/activate
 #FEED_ID=xxx API_KEY=key DEBUG=false DEBUG=false python /opt/temp/cron/am2302.py
 
-/opt/temp/cron/webcam.sh
+# PREPARE FOR WEBCAM ATTACHMENT!
+# /opt/temp/cron/webcam.sh
