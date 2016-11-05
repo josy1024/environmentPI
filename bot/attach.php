@@ -1,5 +1,7 @@
 <?php
 
+# QUELLE: http://stackoverflow.com/questions/32296272/telegram-bot-api-how-to-send-a-photo-using-php
+
 # $argument1
 #include "config.php";
 
