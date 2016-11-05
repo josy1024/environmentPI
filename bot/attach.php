@@ -9,27 +9,41 @@
 # bot token file
 include "/opt/secure/telegram.php";
 
-$argument1 = $argv[1];
+$photo = $argv[1];
 # apiRequest("sendMessage", array('chat_id' => ROOM_ID , "text" => $argument1));
 
 $chat_id = ROOM_ID;
 $bot_url    = "https://api.telegram.org/bot" & BOT_TOKEN & "/";
 $url        = $bot_url . "sendPhoto?chat_id=" . $chat_id ;
 
+    $caption = $photo;
+    // following ones are optional, so could be set as null
+    $reply_to_message_id = null;
+    $reply_markup = null;
 
-$post_fields = array('chat_id'   => $chat_id,
-    'photo'     => new CURLFile(realpath($argument1))
-);
+    $data = array(
+        'chat_id' => urlencode($chat_id),
+         // make sure you do NOT forget @ sign
+        'photo' => '@'.$photo,
+        'caption' => urlencode($caption),
+        'reply_to_message_id' => urlencode($reply_to_message_id),
+        'reply_markup' => urlencode($reply_markup)
+    );
 
-$ch = curl_init(); 
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    "Content-Type:multipart/form-data"
-));
-curl_setopt($ch, CURLOPT_URL, $url); 
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields); 
-$output = curl_exec($ch);
-
-echo $output;
-
+    //  open connection
+    $ch = curl_init();
+    //  set the url
+    curl_setopt($ch, CURLOPT_URL, $url);
+    //  number of POST vars
+    curl_setopt($ch, CURLOPT_POST, count($fields));
+    //  POST data
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+    //  To display result of curl
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    //  execute post
+    $result = curl_exec($ch);
+    //  close connection
+    curl_close($ch);
+    
+    echo $result;
 ?>
