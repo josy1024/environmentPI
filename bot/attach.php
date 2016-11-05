@@ -21,7 +21,7 @@ $url        = $bot_url . "sendPhoto?chat_id=" . $chat_id ;
     $reply_to_message_id = null;
     $reply_markup = null;
 
-    $data = array(
+    $post_fields = array(
         'chat_id' => urlencode($chat_id),
          // make sure you do NOT forget @ sign
         'photo' => '@'.$photo,
@@ -35,9 +35,9 @@ $url        = $bot_url . "sendPhoto?chat_id=" . $chat_id ;
     //  set the url
     curl_setopt($ch, CURLOPT_URL, $url);
     //  number of POST vars
-    curl_setopt($ch, CURLOPT_POST, count($fields));
+    curl_setopt($ch, CURLOPT_POST, count($post_fields));
     //  POST data
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
     //  To display result of curl
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     //  execute post
