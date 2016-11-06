@@ -5,7 +5,12 @@ OUTPUT=/var/www/html/cam
 # -v verbose?
 # -r resolution
 
-/usr/bin/fswebcam -r"1920x1080" $OUTPUT/latest.jpg 2> $OUTPUT/latest.txt
+# /etc/sudoers
+#www-data ALL=NOPASSWD:/opt/433Utils/RPi_utils/send
+#www-data ALL=NOPASSWD:/usr/bin/fswebcam
+
+
+sudo /usr/bin/fswebcam -r"1920x1080" $OUTPUT/latest.jpg 2> $OUTPUT/latest.txt
 
 
 # CONFIG variablen für TELEGRAM BOT API:
