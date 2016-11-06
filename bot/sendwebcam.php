@@ -1,6 +1,8 @@
 <?php
 
-$prg="sudo /opt/temp/cron/webcam.sh";
+# no sudo needed... 
+
+$prg="/opt/temp/cron/webcam.sh";
 
 echo $prg;
 $last_line = system($prg, $retval);
