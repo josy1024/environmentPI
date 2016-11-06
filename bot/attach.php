@@ -14,9 +14,9 @@ $photo = $argv[1];
 
 $chat_id = ROOM_ID;
 $bot_url    = "https://api.telegram.org/bot" & BOT_TOKEN & "/";
-$url        = $bot_url . "sendPhoto?chat_id=" . $chat_id ;
+$url        = $bot_url . "sendPhoto";
 
-echo $photo . filesize("/var/www/html/cam/latest.jpg"); 
+echo $photo . filesize($photo); 
 
 $ch = curl_init(); 
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -25,11 +25,10 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 curl_setopt($ch, CURLOPT_URL, $url); 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
 curl_setopt($ch, CURLOPT_POSTFIELDS, array(
-    #"photo"     => "@$photo", 
-    "photo"     => "@/var/www/html/cam/latest.jpg",
-     
+    "chat_id"  => $chat_id,
+    "photo"    => "@".$photo,
 )); 
-curl_setopt($ch, CURLOPT_INFILESIZE, filesize("/var/www/html/cam/latest.jpg"));
+curl_setopt($ch, CURLOPT_INFILESIZE, filesize($photo));
 $output = curl_exec($ch);
 print $output;
 
