@@ -9,8 +9,8 @@ OUTPUT=/var/www/html/cam
 #www-data ALL=NOPASSWD:/opt/433Utils/RPi_utils/send
 #www-data ALL=NOPASSWD:/usr/bin/fswebcam
 
-
-sudo /usr/bin/fswebcam −−delay 2 -r"1920x1080" $OUTPUT/latest.jpg 2> $OUTPUT/latest.txt
+# skip 60 frames for sharping and auto color light adjust
+sudo /usr/bin/fswebcam -S 60  -r"1920x1080" $OUTPUT/latest.jpg 2> $OUTPUT/latest.txt
 
 
 # CONFIG variablen für TELEGRAM BOT API:
