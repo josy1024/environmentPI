@@ -29,23 +29,25 @@ if [ ! -e "$STATEFILE" ]; then
     touch $STATEFILE
 fi
 
-STATEFILE=$TEMPDIR/airsensor.high
 
+if [ "${VAL_AIR}" -gt "100" ]; then
+    STATEFILE=$TEMPDIR/airsensor.high
 # hysterese ab 1300, unter 1000 entwarnung
-if [ "${VAL_AIR}" -gt "1300" ]; then
-    if [ ! -e "$STATEFILE" ]; then
-        /usr/bin/php $BOT/tele.php "bitte lueften luft schlecht! ${MESSAGE}"
-        touch $STATEFILE
+    if [ "${VAL_AIR}" -gt "1300" ]; then
+        if [ ! -e "$STATEFILE" ]; then
+            /usr/bin/php $BOT/tele.php "bitte lueften luft schlecht! ${MESSAGE}"
+            touch $STATEFILE
+        fi
     fi
-fi
 
-if [ "${VAL_AIR}" -lt "1000" ]; then
-    if [ -e "$STATEFILE" ]; then
-        /usr/bin/php $BOT/tele.php "Luft erholt sich ;-) ${MESSAGE}"
-        /bin/rm $STATEFILE
+    if [ "${VAL_AIR}" -lt "1000" ]; then
+        if [ -e "$STATEFILE" ]; then
+            /usr/bin/php $BOT/tele.php "Luft erholt sich ;-) ${MESSAGE}"
+            /bin/rm $STATEFILE
+        fi
     fi
-fi
 
+fi
 
 STATEFILE=$TEMPDIR/dht_gpio7_temp.high
 
@@ -64,6 +66,21 @@ if [ "${VAL_TEMP}" -lt "22" ]; then
     fi
 fi
 
+STATEFILE=$TEMPDIR/dht_gpio7_temp.low
+#temperatur 22-24
+if [ "${VAL_TEMP}" -lt "18" ]; then
+    if [ ! -e "$STATEFILE" ]; then
+        /usr/bin/php $BOT/tele.php "KALT - fenster offen? ${MESSAGE}"
+        touch $STATEFILE
+    fi
+fi
+
+if [ "${VAL_TEMP}" -gt "19" ]; then
+    if [ -e "$STATEFILE" ]; then
+        /usr/bin/php $BOT/tele.php "Temp wieder OK ;-) ${MESSAGE}"
+        /bin/rm $STATEFILE
+    fi
+fi
 
 STATEFILE=$TEMPDIR/dht_gpio7_hum.high
 
