@@ -21,8 +21,11 @@ echo $prg;
 usleep (rand(0, 20000));
 
 do {
-    exec("ps aux | grep 433 | grep -i 'send'", $pids);
-
+#    exec("ps aux | grep 433 | grep -i 'send'", $pids);
+#    exec("ps aux | grep -v 'ps aux' | grep -i 'send'", $pids);
+    unset ($pids);
+    exec("/usr/bin/pgrep 'send' ", $pids);
+    echo $pids;
 
     if(empty($pids)) {
     # läuft nicht - weiter ;-)
@@ -33,7 +36,7 @@ do {
             $looper++;
     }
 
-} while ($looper < 40);
+} while ($looper < 20);
 
 $last_line = system($prg, $retval);
 
