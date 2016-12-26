@@ -21,7 +21,7 @@ echo $prg;
 usleep (rand(0, 20000));
 $runme = "";
 do {
-#    exec("ps aux | grep 433 | grep -i 'send'", $pids);
+#    exec("ps aux | grep 433 | grep -i 'send'", $pids); 
 #    exec("ps aux | grep -v 'ps aux' | grep -i 'send'", $pids);
     unset ($pids);
     exec("/usr/bin/pgrep 'send' ", $pids);
@@ -34,7 +34,7 @@ do {
         break;
     } else {
             # randomize queue
-            usleep (rand(100000, 200000));
+            usleep (rand(50000, 200000));
             $looper++;
     }
 
