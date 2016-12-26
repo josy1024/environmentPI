@@ -56,6 +56,6 @@ file_put_contents($PIDFILE, "");
 
 $time_elapsed_secs = microtime(true) - $start;
 
-echo '<hr />' & $time_elapsed_secs;
+echo '<hr />Time: ' . $time_elapsed_secs;
 
 ?>
