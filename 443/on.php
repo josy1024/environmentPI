@@ -29,18 +29,18 @@ do {
     exec("/usr/bin/pgrep 'send' ", $pids);
     $runme = file_get_contents($PIDFILE, true);
 
-    echo $pids;
+    var_dump($pids);
 
     if (   (empty($pids)) && ($runme != "WAIT")) {
     # läuft nicht - weiter ;-)
         break;
     } else {
             # randomize queue
-            usleep (rand(80000, 100000));
+            usleep (rand(100000, 100000));
             $looper++;
     }
 
-} while ($looper < 20);
+} while ($looper < 3);
 
 file_put_contents($PIDFILE, "WAIT");
 
