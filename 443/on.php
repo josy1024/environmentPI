@@ -18,7 +18,7 @@ $prg="sudo /opt/433Utils/RPi_utils/send $installid $schalter $on";
 
 echo $prg;
 
-usleep (rand(0, 10000));
+usleep (rand(0, 20000));
 
 do {
     exec("ps aux | grep 433 | grep -i 'send'", $pids);
@@ -29,11 +29,11 @@ do {
         break;
     } else {
             # randomize queue
-            usleep (rand(100000, 300000));
+            usleep (rand(50000, 100000));
             $looper++;
     }
 
-} while ($looper < 5);
+} while ($looper < 40);
 
 $last_line = system($prg, $retval);
 
