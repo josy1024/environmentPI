@@ -36,7 +36,9 @@ do {
             $looper++;
     }
 
-} while ($looper < 20);
+} while ($looper < 40);
+
+file_put_contents("on.stats.txt", $looper);
 
 $last_line = system($prg, $retval);
 
