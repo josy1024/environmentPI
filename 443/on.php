@@ -18,6 +18,7 @@ $prg="sudo /opt/433Utils/RPi_utils/send $installid $schalter $on";
 
 echo $prg;
 
+usleep (rand(0, 10000));
 
 do {
     exec("ps aux | grep 433 | grep -i 'send'", $pids);
