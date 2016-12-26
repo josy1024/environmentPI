@@ -16,6 +16,9 @@ $prg="sudo /opt/433Utils/RPi_utils/send $installid $schalter $on";
 
 echo $prg;
 
+# randomize queue
+sleep(rand(0, 3));
+
 $last_line = system($prg, $retval);
 
 echo '
