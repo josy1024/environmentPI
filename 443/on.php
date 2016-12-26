@@ -28,11 +28,11 @@ do {
         break;
     } else {
             # randomize queue
-            usleep (rand(50000, 300000));
+            usleep (rand(100000, 300000));
             $looper++;
     }
 
-} while ($looper < 3);
+} while ($looper < 5);
 
 $last_line = system($prg, $retval);
 
