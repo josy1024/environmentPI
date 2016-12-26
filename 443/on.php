@@ -36,7 +36,7 @@ do {
         break;
     } else {
             # randomize queue
-            usleep (rand(100000, 100000));
+            usleep (rand(80000, 100000));
             $looper++;
     }
 
