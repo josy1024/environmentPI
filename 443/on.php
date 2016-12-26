@@ -6,7 +6,7 @@ $on = 1;
 $schalter = 2;
 $installid="11111";
 
-$PIDFILE = "onstats.txt";
+$PIDFILE = "onstats.pid";
 
 $looper = 0;
 
