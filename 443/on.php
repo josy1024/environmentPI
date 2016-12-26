@@ -1,5 +1,7 @@
 <?php
 
+$start = microtime(true);
+
 #if (isset($_GET["on"])) {$on=$_GET["on"];}
 
 $on = 1;
@@ -34,7 +36,7 @@ do {
         break;
     } else {
             # randomize queue
-            usleep (rand(100000, 200000));
+            usleep (rand(100000, 100000));
             $looper++;
     }
 
@@ -48,9 +50,12 @@ $last_line = system($prg, $retval);
 echo '
 </pre>
 <hr />Letzte Zeile der Ausgabe: ' . $last_line . '
-<hr />Rückgabewert: ' . $retval .'
-<hr />Anlauf: ' . $looper;
+<hr />Rückgabewert: ' . $retval .' Anlauf: ' . $looper;
 
 file_put_contents($PIDFILE, "");
+
+$time_elapsed_secs = microtime(true) - $start;
+
+echo '<hr />' & $time_elapsed_secs;
 
 ?>
