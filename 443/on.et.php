@@ -20,7 +20,7 @@ if (isset($_GET["on"])) {$on = intval($_GET["on"]);}
 # GPIO0 17 433 receive	(sniffer)
 # GPIO4	23 433 send (send)
 
-# GPIO PIN 4:
+# GPIO PIN 4: (Etekcity 5 Pack)
 
 $prg="sudo /var/www/rfoutlet/RFSource/codesend -p 4 $on";
 
