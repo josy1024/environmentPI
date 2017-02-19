@@ -16,7 +16,13 @@ if (isset($_GET["on"])) {$on = intval($_GET["on"]);}
 
 #if (isset($_GET["s"])) {$schalter= intval($_GET["s"]);}
 
-$prg="sudo /var/www/rfoutlet/RFSource/codesend $on";
+## 433 send + receive
+# GPIO0 17 433 receive	(sniffer)
+# GPIO4	23 433 send (send)
+
+# GPIO PIN 4:
+
+$prg="sudo /var/www/rfoutlet/RFSource/codesend -p 4 $on";
 
 echo $prg;
 

@@ -40,7 +40,7 @@ do {
             $looper++;
     }
 
-} while ($looper < 3);
+} while ($looper < 5);
 
 file_put_contents($PIDFILE, "WAIT");
 
