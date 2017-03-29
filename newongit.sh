@@ -137,3 +137,15 @@ python -m pip install pylint autopep8
 
 
 sudo apt get install fswebcam 
+
+## RASPI LED STREIFEN:
+# https://tutorials-raspberrypi.de/raspberry-pi-ws2801-rgb-led-streifen-anschliessen-steuern/
+
+# I downloaded RPi.GPIO 5.3a from here: https://pypi.python.org/pypi/RPi.GPIO
+# I extracted the tar file, cd into the folder and ran:
+sudo python setup.py install
+
+# hyperion:
+# bash -c cd /tmp && wget -nv -N https://raw.github.com/hyperion-project/hyperion/master/bin/install_hyperion.sh && chmod +x install_hyperion.sh
+
+
