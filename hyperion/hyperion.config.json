@@ -571,22 +571,17 @@
 		{
 			"index" : 82,
 			"hscan" : { "minimum" : 0.9500, "maximum" : 1.0000 },
-			"vscan" : { "minimum" : 0.0000, "maximum" : 0.2500 }
+			"vscan" : { "minimum" : 0.0000, "maximum" : 0.3333 }
 		},
 		{
 			"index" : 83,
 			"hscan" : { "minimum" : 0.9500, "maximum" : 1.0000 },
-			"vscan" : { "minimum" : 0.2500, "maximum" : 0.5000 }
+			"vscan" : { "minimum" : 0.3333, "maximum" : 0.6667 }
 		},
 		{
 			"index" : 84,
 			"hscan" : { "minimum" : 0.9500, "maximum" : 1.0000 },
-			"vscan" : { "minimum" : 0.5000, "maximum" : 0.7500 }
-		},
-		{
-			"index" : 85,
-			"hscan" : { "minimum" : 0.9500, "maximum" : 1.0000 },
-			"vscan" : { "minimum" : 0.7500, "maximum" : 1.0000 }
+			"vscan" : { "minimum" : 0.6667, "maximum" : 1.0000 }
 		}
 	],
 
