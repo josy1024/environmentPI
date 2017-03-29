@@ -148,4 +148,5 @@ sudo python setup.py install
 # hyperion:
 # bash -c cd /tmp && wget -nv -N https://raw.github.com/hyperion-project/hyperion/master/bin/install_hyperion.sh && chmod +x install_hyperion.sh
 
-
+# always use hyperion config from git
+ln -s /opt/temp/hyperion/hyperion.config.json /etc/hyperion/hyperion.config.json
