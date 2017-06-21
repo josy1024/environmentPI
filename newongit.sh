@@ -48,6 +48,7 @@ git clone https://github.com/josy1024/environmentPI.git temp
 
 ## w1 temperatur
 
+# https://wiki.libreelec.tv/index.php?title=Config.txt
 #/boot/config.txt
 dtoverlay=w1-gpio,gpiopin=22,pullup=on
 
