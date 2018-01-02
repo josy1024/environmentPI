@@ -42,7 +42,7 @@ def read_sensorair():
   return subprocess.check_output(["cat /opt/data/airsensor.txt"], shell=True)
   
 
-# main program entry point - runs continuously updating our datastream with the
+# main program entry point
 # current 1 minute load average
 def run():
   print ("Starting adafruit.py script")
@@ -77,7 +77,7 @@ def run():
     try:
       aio.send('temp', sensor)
       file = open('/opt/data/' + filever + '.sent', "w")
-      file.write(datastream.current_value)
+      file.write(sensor)
       file.close()
     except requests.HTTPError as e:
       print ("HTTPError({0}): {1}".format(e.errno, e.strerror))
@@ -100,17 +100,13 @@ def run():
     try:
       aio.send('hum', sensorhum)
       file = open('/opt/data/' + filever + '.sent', "w")
-      file.write(datastreamhum.current_value)
+      file.write(sensorhum)
       file.close()
     except requests.HTTPError as e:
       print ("HTTPError({0}): {1}".format(e.errno, e.strerror))
   else:
     if DEBUG:
       print ("minimal change: %s " % comparevalue )
-
-  datastreamair = get_datastreamair(feed)
-  datastreamair.max_value = None
-  datastreamair.min_value = None
 
   filever = 'airsensor.txt'
   try:
@@ -128,7 +124,7 @@ def run():
       try:
         aio.send('air', sensorair)
         file = open('/opt/data/' + filever + '.sent', "w")
-        file.write(datastreamair.current_value)
+        file.write(sensorair)
         file.close()
       except requests.HTTPError as e:
         print ("HTTPError({0}): {1}".format(e.errno, e.strerror))
