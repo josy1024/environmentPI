@@ -14,13 +14,20 @@
 /opt/temp/cron/airsensor.sh
 
 /opt/secure/adafruit.sh
-# /usr/bin/python /opt/temp/cron/adafroit.py >/dev/null
+
+#!/bin/bash
+#export IO_USERNAME=""
+#export IO_KEY=""
+#export DEBUG="false"
+#/usr/bin/python /opt/temp/cron/adafruit.py >/dev/null
+
+# /usr/bin/python /opt/temp/cron/adafruit.py >/dev/null
 
 #/opt/temp/cron/webcam.sh
 
-
 ##push /opt/data values to xively
-/opt/secure/xively.sh
+# retire xively 
+# /opt/secure/xively.sh
 
 #RUFT dann /opt/temp/cron/am2302.py auf!
 #!/bin/bash
