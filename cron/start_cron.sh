@@ -1,5 +1,6 @@
 #!/bin/bash
 #Scriptname: start_cron.sh
+# crontab
 
 # execute right for script:
 # git update-index --chmod=+x start_cron.sh
@@ -11,6 +12,9 @@
 
 /opt/temp/cron/am2302.sh
 /opt/temp/cron/airsensor.sh
+
+/opt/secure/adafruit.sh
+# /usr/bin/python /opt/temp/cron/adafroit.py >/dev/null
 
 #/opt/temp/cron/webcam.sh
 

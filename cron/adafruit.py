@@ -1,0 +1,139 @@
+#!/usr/bin/env python
+
+# vim: tabstop=4 expandtab shiftwidth=2 softtabstop=2
+
+#FEED_ID=xxx API_KEY=key DEBUG=false python /opt/tuto ial/temp1.py >/dev/null
+#FEED_ID=xxx API_KEY=key DEBUG=false 
+# python /opt/temp/cron/adafruit.py >/dev/null
+
+
+import os
+import subprocess
+import time
+import datetime
+import requests
+
+# extract feed_id and api_key from environment variables
+FEED_ID = os.environ["IO_USERNAME"]
+IO_KEY = os.environ["IO_KEY"]
+DEBUG = os.environ["DEBUG"] or false
+
+# Import library and create instance of REST client.
+from Adafruit_IO import Client
+aio = Client(IO_KEY)
+
+
+# function to read 1 minute load average from system uptime command
+def read_sensorhum():
+  if DEBUG:
+    print ("Reading hum")
+  return subprocess.check_output(["cat /opt/data/dht_gpio7_hum.txt"], shell=True)
+
+def read_sensortemp():
+  if DEBUG:
+    print ("Reading temp")
+#  return subprocess.check_output(["rrdtool lastupdate /opt/temp/temperature.rrd | tail -1 | /usr/bin/awk '{print $2}'"], shell=True)
+  return subprocess.check_output(["cat /opt/data/dht_gpio7_temp.txt"], shell=True)
+  
+def read_sensorair():
+  if DEBUG:
+    print ("Reading air")
+#  return subprocess.check_output(["rrdtool lastupdate /opt/temp/temperature.rrd | tail -1 | /usr/bin/awk '{print $2}'"], shell=True)
+  return subprocess.check_output(["cat /opt/data/airsensor.txt"], shell=True)
+  
+
+# main program entry point - runs continuously updating our datastream with the
+# current 1 minute load average
+def run():
+  print ("Starting adafruit.py script")
+
+  # ein prozent!!
+  compareprozentair = 0.01
+  compareprozent = 0.008
+
+  oldsensor = "0"
+
+  sensor = read_sensortemp()
+  sensorhum = read_sensorhum()
+  sensorair = read_sensorair()
+
+  # Add the value 98.6 to the feed 'Temperature'.
+  #aio.send('temp', sensor)
+  #aio.send('hum', sensorhum)
+  #aio.send('air', sensorair)
+
+
+  filever = "dht_gpio7_temp.txt"
+  try:
+    file = open('/opt/data/' + filever + '.sent', 'r')
+    oldsensor = file.readline()
+  except:
+    pass
+
+  comparevalue = abs( (float(sensor) - float(oldsensor)) / float(sensor) )
+  if comparevalue > compareprozent:
+    if DEBUG:
+      print("Updating temp feed with value: %s old %s  " % (sensor, oldsensor))
+    try:
+      aio.send('temp', sensor)
+      file = open('/opt/data/' + filever + '.sent', "w")
+      file.write(datastream.current_value)
+      file.close()
+    except requests.HTTPError as e:
+      print ("HTTPError({0}): {1}".format(e.errno, e.strerror))
+  else:
+    if DEBUG:
+      print ("minimal change: %s " % comparevalue )
+
+  filever = 'dht_gpio7_hum.txt'
+  try:
+    file = open('/opt/data/' + filever + '.sent', 'r')
+    oldsensor = file.readline() 
+  except:
+    pass
+  
+  comparevalue = abs( (float(sensorhum) - float(oldsensor)) / float(sensorhum) )
+  if comparevalue > compareprozent:
+    if DEBUG:
+      print ("Updating hum feed with value: %s old %s  " % (sensorhum, oldsensor))
+
+    try:
+      aio.send('hum', sensorhum)
+      file = open('/opt/data/' + filever + '.sent', "w")
+      file.write(datastreamhum.current_value)
+      file.close()
+    except requests.HTTPError as e:
+      print ("HTTPError({0}): {1}".format(e.errno, e.strerror))
+  else:
+    if DEBUG:
+      print ("minimal change: %s " % comparevalue )
+
+  datastreamair = get_datastreamair(feed)
+  datastreamair.max_value = None
+  datastreamair.min_value = None
+
+  filever = 'airsensor.txt'
+  try:
+    file = open('/opt/data/' + filever + '.sent', 'r')
+    oldsensor = file.readline()
+  except:
+    pass
+
+  if float(sensorair) > 10:
+    comparevalue = abs( (float(sensorair) - float(oldsensor)) / float(sensorair) )
+    if comparevalue > compareprozentair:
+      if DEBUG:
+        print ("Updating air  feed with value: %s old %s  " % (sensorair, oldsensor))
+
+      try:
+        aio.send('air', sensorair)
+        file = open('/opt/data/' + filever + '.sent', "w")
+        file.write(datastreamair.current_value)
+        file.close()
+      except requests.HTTPError as e:
+        print ("HTTPError({0}): {1}".format(e.errno, e.strerror))
+    else:
+      if DEBUG:
+        print ("minimal change: %s " % comparevalue )
+
+run()

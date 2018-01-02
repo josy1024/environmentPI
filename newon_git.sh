@@ -43,6 +43,10 @@ cd /opt
 #git bash added git repository
 git clone https://github.com/josy1024/environmentPI.git temp
 
+#default editor for vim!
+apt-get install vim
+sudo update-alternatives --config editor
+
 #crontab:
 #  * 18 * * * cd /opt/temp && /usr/bin/git pull origin master
 
@@ -136,7 +140,7 @@ python
 python -m pip install pylint autopep8
 
 
-sudo apt get install fswebcam 
+sudo apt-get install fswebcam 
 
 ## RASPI LED STREIFEN:
 # https://tutorials-raspberrypi.de/raspberry-pi-ws2801-rgb-led-streifen-anschliessen-steuern/
