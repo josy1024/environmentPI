@@ -157,7 +157,7 @@ sudo python setup.py install
 ln -s /opt/temp/hyperion/hyperion.config.json /etc/hyperion/hyperion.config.json
 
 
-# kodi port 800
+# kodi port 800 (dienste config)
 # lighthttp port 801 (/etc/lighttpd/lighttpd.conf)
 # ha-bridge port 80 (für alexa!!)
 # 
