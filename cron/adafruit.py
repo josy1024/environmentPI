@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # vim: tabstop=4 expandtab shiftwidth=2 softtabstop=2
 
@@ -18,10 +18,10 @@ FEED_ID = os.environ["IO_USERNAME"]
 IO_KEY = os.environ["IO_KEY"]
 DEBUG = os.environ["DEBUG"] or false
 
+# ? getting error!
 # Import library and create instance of REST client.
 from Adafruit_IO import Client
 aio = Client(IO_KEY)
-
 
 # function to read 1 minute load average from system uptime command
 def read_sensorhum():
