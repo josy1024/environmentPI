@@ -75,7 +75,7 @@ def run():
     if DEBUG:
       print("Updating temp feed with value: %s old %s  " % (sensor, oldsensor))
     try:
-      aio.send('temp', sensor)
+      aio.send('temp', str(sensor))
       file = open('/opt/data/' + filever + '.sent', "w")
       file.write(sensor)
       file.close()
@@ -98,7 +98,7 @@ def run():
       print ("Updating hum feed with value: %s old %s  " % (sensorhum, oldsensor))
 
     try:
-      aio.send('hum', sensorhum)
+      aio.send('hum', str(sensorhum))
       file = open('/opt/data/' + filever + '.sent', "w")
       file.write(sensorhum)
       file.close()
@@ -122,7 +122,7 @@ def run():
         print ("Updating air  feed with value: %s old %s  " % (sensorair, oldsensor))
 
       try:
-        aio.send('air', sensorair)
+        aio.send('air', str(sensorair))
         file = open('/opt/data/' + filever + '.sent', "w")
         file.write(sensorair)
         file.close()
