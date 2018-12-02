@@ -27,19 +27,19 @@ aio = Client(FEED_ID, IO_KEY)
 def read_sensorhum():
   if DEBUG:
     print ("Reading hum")
-  return subprocess.check_output(["cat /opt/data/dht_gpio7_hum.txt"], shell=True)
+  return subprocess.check_output(["cat /opt/data/dht_gpio7_hum.txt|tr -d '\n'"], shell=True)
 
 def read_sensortemp():
   if DEBUG:
     print ("Reading temp")
 #  return subprocess.check_output(["rrdtool lastupdate /opt/temp/temperature.rrd | tail -1 | /usr/bin/awk '{print $2}'"], shell=True)
-  return subprocess.check_output(["cat /opt/data/dht_gpio7_temp.txt"], shell=True)
+  return subprocess.check_output(["cat /opt/data/dht_gpio7_temp.txt|tr -d '\n'"], shell=True)
   
 def read_sensorair():
   if DEBUG:
     print ("Reading air")
 #  return subprocess.check_output(["rrdtool lastupdate /opt/temp/temperature.rrd | tail -1 | /usr/bin/awk '{print $2}'"], shell=True)
-  return subprocess.check_output(["cat /opt/data/airsensor.txt"], shell=True)
+  return subprocess.check_output(["cat /opt/data/airsensor.txt|tr -d '\n'"], shell=True)
   
 
 # main program entry point
