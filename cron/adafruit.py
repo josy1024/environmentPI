@@ -21,7 +21,7 @@ DEBUG = os.environ["DEBUG"] or false
 # ? getting error!
 # Import library and create instance of REST client.
 from Adafruit_IO import Client
-aio = Client(IO_KEY)
+aio = Client(FEED_ID, IO_KEY)
 
 # function to read 1 minute load average from system uptime command
 def read_sensorhum():
