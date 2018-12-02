@@ -1,3 +1,6 @@
+# LAJO: 2.12.2018: used/restored to raspian
+# restore /opt
+# update "git pull" and new compiled 
 
 ## HARDWARE PIN MAPPING!!
 
@@ -108,6 +111,9 @@ cd /opt/airsensor
 wget https://raw.githubusercontent.com/jschanz/usb-sensors-linux/master/airsensor/airsensor.c
 
 gcc -o airsensor airsensor.c -lusb
+#(braucht das crontab script für telegram notifications)
+
+apt-get install php-cli
 
 
 ## APACHE
