@@ -81,7 +81,7 @@ def run():
     try:
       aio.send('temp', str(sensor))
       file = open('/opt/data/' + filever + '.sent', "w")
-      file.write(sensor)
+      file.write(str(sensor))
       file.close()
     except requests.HTTPError as e:
       print ("HTTPError({0}): {1}".format(e.errno, e.strerror))
@@ -109,7 +109,7 @@ def run():
     try:
       aio.send('hum', str(sensorhum))
       file = open('/opt/data/' + filever + '.sent', "w")
-      file.write(sensorhum)
+      file.write(str(sensorhum))
       file.close()
     except requests.HTTPError as e:
       print ("HTTPError({0}): {1}".format(e.errno, e.strerror))
@@ -124,7 +124,7 @@ def run():
   except:
     pass
 
-  if float(sensorair) > 10:
+  if float(str(sensorair)) > 10:
     try:
       comparevalue = abs( (float(sensorair) - float(oldsensor)) / float(sensorair) )
     except:
@@ -137,7 +137,7 @@ def run():
       try:
         aio.send('air', str(sensorair))
         file = open('/opt/data/' + filever + '.sent', "w")
-        file.write(sensorair)
+        file.write(str(sensorair))
         file.close()
       except requests.HTTPError as e:
         print ("HTTPError({0}): {1}".format(e.errno, e.strerror))
