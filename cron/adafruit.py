@@ -130,7 +130,8 @@ def run():
     comparevalue = 1
     
   #if float(str(sensorair)) > 10:
-
+  #
+  
   if comparevalue > compareprozentair:
     if DEBUG:
       print ("Updating air  feed with value: %s old %s  " % (sensorair, oldsensor))
