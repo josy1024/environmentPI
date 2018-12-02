@@ -51,7 +51,7 @@ def run():
   compareprozentair = 0.01
   compareprozent = 0.008
 
-  oldsensor = "0"
+  oldsensor = 0
 
   sensor = read_sensortemp()
   sensorhum = read_sensorhum()
