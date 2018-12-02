@@ -53,9 +53,9 @@ def run():
 
   oldsensor = 0
 
-  sensor = read_sensortemp()
-  sensorhum = read_sensorhum()
-  sensorair = read_sensorair()
+  sensor = str(read_sensortemp())
+  sensorhum = str(read_sensorhum())
+  sensorair = str(read_sensorair())
 
   # Add the value 98.6 to the feed 'Temperature'.
   #aio.send('temp', sensor)
@@ -69,8 +69,12 @@ def run():
     oldsensor = file.readline()
   except:
     pass
-
-  comparevalue = abs( (float(sensor) - float(oldsensor)) / float(sensor) )
+  
+  try:
+    comparevalue = abs( (float(sensor) - float(oldsensor)) / float(sensor) )
+  except:
+    comparevalue = 1
+  
   if comparevalue > compareprozent:
     if DEBUG:
       print("Updating temp feed with value: %s old %s  " % (sensor, oldsensor))
