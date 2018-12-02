@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
+
+# probleme mit unicode strings in python3!!!
 
 # vim: tabstop=4 expandtab shiftwidth=2 softtabstop=2
 
@@ -131,7 +133,7 @@ def run():
     
   #if float(str(sensorair)) > 10:
   #
-  
+
   if comparevalue > compareprozentair:
     if DEBUG:
       print ("Updating air  feed with value: %s old %s  " % (sensorair, oldsensor))
