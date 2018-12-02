@@ -66,7 +66,7 @@ def run():
   filever = "dht_gpio7_temp.txt"
   try:
     file = open('/opt/data/' + filever + '.sent', 'r')
-    oldsensor = file.readline()
+    oldsensor = str(file.readline())
   except:
     pass
   
@@ -92,7 +92,7 @@ def run():
   filever = 'dht_gpio7_hum.txt'
   try:
     file = open('/opt/data/' + filever + '.sent', 'r')
-    oldsensor = file.readline() 
+    oldsensor = str(file.readline())
   except:
     pass
   
@@ -120,7 +120,7 @@ def run():
   filever = 'airsensor.txt'
   try:
     file = open('/opt/data/' + filever + '.sent', 'r')
-    oldsensor = file.readline()
+    oldsensor = str(file.readline())
   except:
     pass
 
