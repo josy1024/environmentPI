@@ -113,7 +113,7 @@ wget https://raw.githubusercontent.com/jschanz/usb-sensors-linux/master/airsenso
 gcc -o airsensor airsensor.c -lusb
 #(braucht das crontab script für telegram notifications)
 
-apt-get install php-cli
+apt-get install php-cli php-curl
 
 
 ## APACHE
