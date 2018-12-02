@@ -124,25 +124,26 @@ def run():
   except:
     pass
 
-  if float(str(sensorair)) > 10:
+  try:
+    comparevalue = abs( (float(sensorair) - float(oldsensor)) / float(sensorair) )
+  except:
+    comparevalue = 1
+    
+  #if float(str(sensorair)) > 10:
+
+  if comparevalue > compareprozentair:
+    if DEBUG:
+      print ("Updating air  feed with value: %s old %s  " % (sensorair, oldsensor))
+
     try:
-      comparevalue = abs( (float(sensorair) - float(oldsensor)) / float(sensorair) )
-    except:
-      comparevalue = 1
-
-    if comparevalue > compareprozentair:
-      if DEBUG:
-        print ("Updating air  feed with value: %s old %s  " % (sensorair, oldsensor))
-
-      try:
-        aio.send('air', str(sensorair))
-        file = open('/opt/data/' + filever + '.sent', "w")
-        file.write(str(sensorair))
-        file.close()
-      except requests.HTTPError as e:
-        print ("HTTPError({0}): {1}".format(e.errno, e.strerror))
-    else:
-      if DEBUG:
-        print ("minimal change: %s " % comparevalue )
+      aio.send('air', str(sensorair))
+      file = open('/opt/data/' + filever + '.sent', "w")
+      file.write(str(sensorair))
+      file.close()
+    except requests.HTTPError as e:
+      print ("HTTPError({0}): {1}".format(e.errno, e.strerror))
+  else:
+    if DEBUG:
+      print ("minimal change: %s " % comparevalue )
 
 run()
