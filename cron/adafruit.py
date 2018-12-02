@@ -96,7 +96,12 @@ def run():
   except:
     pass
   
-  comparevalue = abs( (float(sensorhum) - float(oldsensor)) / float(sensorhum) )
+  
+  try:
+    comparevalue = abs( (float(sensorhum) - float(oldsensor)) / float(sensorhum) )
+  except:
+    comparevalue = 1
+
   if comparevalue > compareprozent:
     if DEBUG:
       print ("Updating hum feed with value: %s old %s  " % (sensorhum, oldsensor))
@@ -120,7 +125,11 @@ def run():
     pass
 
   if float(sensorair) > 10:
-    comparevalue = abs( (float(sensorair) - float(oldsensor)) / float(sensorair) )
+    try:
+      comparevalue = abs( (float(sensorair) - float(oldsensor)) / float(sensorair) )
+    except:
+      comparevalue = 1
+
     if comparevalue > compareprozentair:
       if DEBUG:
         print ("Updating air  feed with value: %s old %s  " % (sensorair, oldsensor))
