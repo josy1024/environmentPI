@@ -71,8 +71,9 @@ w1-therm
 # COMPILE: wireingpi
 cd /opt
 git clone git://git.drogon.net/wiringPi && 
-
-cd wiringPi &&./build
+cd wiringPi 
+git pull
+./build
 
 
 
